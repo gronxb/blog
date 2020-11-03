@@ -3,26 +3,26 @@ import Img, { FluidObject } from "gatsby-image"
 import styled from "styled-components"
 
 const Card = styled.div`
-  width: 700px;
-  height: 360px;
+  width: 100%;
+  height: 300px;
   border-radius: 5px;
-  padding: 1.5rem;
   background: white;
   position: relative;
   display: flex;
   align-items: flex-end;
   transition: 0.4s ease-out;
-  box-shadow: 0px 7px 10px rgba(black, 0.5);
-
+  cursor: pointer;
   &:hover {
-    img {
-      filter: brightness(50%);
-    }
     transform: translateY(20px);
     &:before {
       opacity: 1;
     }
+    .bg-bar{
+      border-radius: 5px;
+      height:100%;
+    }
     .info {
+      padding-bottom: 7.5rem;
       p:nth-last-child(1) {
         opacity: 1;
       }
@@ -39,14 +39,23 @@ const Card = styled.div`
     top: 0;
     left: 0;
     border-radius: 5px;
-    transition: 0.3s;
+    transition: 1s;
   }
-  
+
+  .bg-bar{
+    position: absolute;
+    border-radius: 0 0 5px 5px;
+    width:100%;
+    height:120px;
+    background: rgba(0,0,0,0.3);
+    transition: 0.5s;
+  }
+
   .info {
     position: relative;
     z-index: 3;
     color: white;
-   
+    padding-left: 1.5rem;
     transform: translateY(30px);
     transition: 0.5s;
     h1 {
@@ -57,8 +66,8 @@ const Card = styled.div`
       letter-spacing: 1px;
       font-size: 15px;
       margin-top: 8px;
-     
     }
+    
     p:nth-last-child(1) {
       opacity: 0;
     }
@@ -75,7 +84,9 @@ export default function PostView({ src, title, date, description }: IPostView) {
   return (
     <Card>
       <img src={src} />
+      <div className="bg-bar" />
       <div className="info">
+       
         <h1>{title}</h1>
         <p>{date}</p>
         <p>{description}</p>

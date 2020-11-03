@@ -6,6 +6,8 @@ import SEO from "../components/seo"
 import { graphql, useStaticQuery } from "gatsby"
 import { Query } from "../gen/graphql-types"
 import PostView from "../components/PostView"
+import styled from "styled-components"
+
 
 const LatestPostListQuery = graphql`
   query LatestPostListQuery {
@@ -30,7 +32,10 @@ const LatestPostListQuery = graphql`
     }
   }
 `
-
+const PostList = styled.li`
+  list-style-type: none;
+  margin-bottom: 30px;
+`;
 const IndexPage = () => {
   const data = useStaticQuery<Query>(LatestPostListQuery)
   return (
@@ -41,10 +46,10 @@ const IndexPage = () => {
         {console.log(data.allMarkdownRemark.edges)}
         {data.allMarkdownRemark.edges.map(({ node }) => (
           
-          <li key={node.id}>
+          <PostList key={node.id}>
             <PostView src={node.frontmatter.thumb.childImageSharp.fluid.src} title={node.frontmatter.title} date={node.frontmatter.date}description={node.excerpt} />
 
-          </li>
+          </PostList>
         ))}
       </ul>
     </Layout>
