@@ -1,6 +1,12 @@
+@font-face { font-family: 'NanumBarunGothic'; font-style: 'normal'; font-weight:400; src: url(../../public/fonts/NanumBarunGothic.ttf) format('truetype'); }
+@font-face { font-family: 'NanumBarunGothic'; font-weight:500; src: url(../../public/fonts/NanumBarunGothicBold.ttf) format('truetype'); }
+@font-face { font-family: 'NanumBarunGothic'; font-weight:300; src: url(../../public/fonts/NanumBarunGothicLight.ttf) format('truetype'); }
+@font-face { font-family: 'NanumBarunGothic'; font-weight:200; src: url(../../public/fonts/NanumBarunGothicUltraLight.ttf) format('truetype'); }
+
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  font-family: 'NanumBarunGothic';
   font: 112.5%/1.45em georgia, serif, sans-serif;
   box-sizing: border-box;
   overflow-y: scroll;
@@ -10,7 +16,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
+  font-family: 'NanumBarunGothic';
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
