@@ -47,7 +47,7 @@ const IndexPage = () => {
         {data.allMarkdownRemark.edges.map(({ node }) => (
           
           <PostList key={node.id}>
-            <PostView src={node.frontmatter.thumb.childImageSharp.fluid.src} title={node.frontmatter.title} date={node.frontmatter.date}description={node.excerpt} />
+            <PostView to={`/${node.frontmatter.title}`} src={node.frontmatter.thumb.childImageSharp.fluid.src} title={node.frontmatter.title} date={node.frontmatter.date}description={node.excerpt} />
 
           </PostList>
         ))}

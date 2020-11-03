@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import Img, { FluidObject } from "gatsby-image"
 import styled from "styled-components"
 
@@ -11,15 +12,14 @@ const Card = styled.div`
   display: flex;
   align-items: flex-end;
   transition: 0.4s ease-out;
-  cursor: pointer;
   &:hover {
     transform: translateY(20px);
     &:before {
       opacity: 1;
     }
-    .bg-bar{
+    .bg-bar {
       border-radius: 5px;
-      height:100%;
+      height: 100%;
     }
     .info {
       padding-bottom: 7.5rem;
@@ -42,12 +42,12 @@ const Card = styled.div`
     transition: 1s;
   }
 
-  .bg-bar{
+  .bg-bar {
     position: absolute;
     border-radius: 0 0 5px 5px;
-    width:100%;
-    height:120px;
-    background: rgba(0,0,0,0.3);
+    width: 100%;
+    height: 120px;
+    background: rgba(0, 0, 0, 0.3);
     transition: 0.5s;
   }
 
@@ -61,13 +61,13 @@ const Card = styled.div`
     h1 {
       margin: 0px;
     }
-    
+
     p {
       letter-spacing: 1px;
       font-size: 15px;
       margin-top: 8px;
     }
-    
+
     p:nth-last-child(1) {
       opacity: 0;
     }
@@ -75,22 +75,30 @@ const Card = styled.div`
 `
 
 interface IPostView {
+  to: string
   src: string
   title: string
   date: string
   description: string
 }
-export default function PostView({ src, title, date, description }: IPostView) {
+export default function PostView({
+  to,
+  src,
+  title,
+  date,
+  description,
+}: IPostView) {
   return (
-    <Card>
-      <img src={src} />
-      <div className="bg-bar" />
-      <div className="info">
-       
-        <h1>{title}</h1>
-        <p>{date}</p>
-        <p>{description}</p>
-      </div>
-    </Card>
+    <Link to={to} style={{ textDecoration: "none" }}>
+      <Card>
+        <img src={src} />
+        <div className="bg-bar" />
+        <div className="info">
+          <h1>{title}</h1>
+          <p>{date}</p>
+          <p>{description}</p>
+        </div>
+      </Card>
+    </Link>
   )
 }
