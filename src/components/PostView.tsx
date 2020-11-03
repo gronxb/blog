@@ -5,7 +5,7 @@ import styled from "styled-components"
 const Card = styled.div`
   width: 700px;
   height: 360px;
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 1.5rem;
   background: white;
   position: relative;
@@ -23,8 +23,9 @@ const Card = styled.div`
       opacity: 1;
     }
     .info {
-      opacity: 1;
-
+      p:nth-last-child(1) {
+        opacity: 1;
+      }
       transform: translateY(0px);
     }
   }
@@ -37,23 +38,29 @@ const Card = styled.div`
     filter: brightness(100%);
     top: 0;
     left: 0;
-    border-radius: 15px;
+    border-radius: 5px;
     transition: 0.3s;
   }
+  
   .info {
     position: relative;
     z-index: 3;
     color: white;
-    opacity: 0;
+   
     transform: translateY(30px);
     transition: 0.5s;
     h1 {
       margin: 0px;
     }
+    
     p {
       letter-spacing: 1px;
       font-size: 15px;
       margin-top: 8px;
+     
+    }
+    p:nth-last-child(1) {
+      opacity: 0;
     }
   }
 `
