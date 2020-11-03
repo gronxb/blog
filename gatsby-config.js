@@ -5,6 +5,20 @@ module.exports = {
     author: `@gron1gh1`,
   },
   plugins: [
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+          name: 'posts',
+          path: `${__dirname}/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-generate-typings`,
+      options: {
+              dest: `./src/graphql-types.d.ts`,
+      },
+    },
+    `gatsby-transformer-remark`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
     {
