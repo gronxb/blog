@@ -6,16 +6,16 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-generate-typings`,
+      options: {
+              dest: `./src/gen/graphql-types.d.ts`,
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
           name: 'posts',
           path: `${__dirname}/posts`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-generate-typings`,
-      options: {
-              dest: `./src/graphql-types.d.ts`,
       },
     },
     `gatsby-transformer-remark`,
