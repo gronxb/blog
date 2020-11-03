@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql, useStaticQuery } from "gatsby"
 import { Query } from "../gen/graphql-types"
-
+import Img from "gatsby-image"
 const LatestPostListQuery = graphql`
   query LatestPostListQuery {
     allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
@@ -15,6 +15,13 @@ const LatestPostListQuery = graphql`
           frontmatter {
             title
             date(formatString: "YYYY-MM-DD HH:mm:ss")
+            thumb{
+              childImageSharp {
+                fixed(width: 125, height: 125) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
           }
           id
         }
@@ -32,6 +39,9 @@ const IndexPage = () => {
         {console.log(data.allMarkdownRemark.edges)}
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <li key={node.id}>
+            <Img
+                  fixed={node.frontmatter.thumb.childImageSharp.fixed}
+                />
             <h2>
               <Link to={`/${node.frontmatter.title}`}>{node.frontmatter.title}</Link>
             </h2>
