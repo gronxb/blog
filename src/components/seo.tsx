@@ -51,6 +51,7 @@ function SEO({ description = "", lang = "ko", title = ""}: ISeo) {
       title={title}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
       meta={[
+
         {
           name: `description`,
           content: metaDescription,

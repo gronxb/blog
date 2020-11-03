@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
     title: `Develment Develog`,
-    description: `Develment Develog`,
+    description: `Develop & Moment, future`,
     author: `@gron1gh1`,
   },
   plugins: [
     {
       resolve: `gatsby-plugin-generate-typings`,
       options: {
-              dest: `./src/gen/graphql-types.d.ts`,
+        dest: `./src/gen/graphql-types.d.ts`,
       },
     },
     {
