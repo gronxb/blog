@@ -14,7 +14,6 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
             frontmatter {
               title
               date(formatString: "YYYY-MM-DD HH:mm:ss")
-              thumb
             }
           }
         }

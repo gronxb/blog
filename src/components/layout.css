@@ -1,7 +1,7 @@
-@font-face { font-family: 'NanumBarunGothic'; font-style: 'normal'; font-weight:400; src: url(../../public/fonts/NanumBarunGothic.ttf) format('truetype'); }
-@font-face { font-family: 'NanumBarunGothic'; font-weight:500; src: url(../../public/fonts/NanumBarunGothicBold.ttf) format('truetype'); }
-@font-face { font-family: 'NanumBarunGothic'; font-weight:300; src: url(../../public/fonts/NanumBarunGothicLight.ttf) format('truetype'); }
-@font-face { font-family: 'NanumBarunGothic'; font-weight:200; src: url(../../public/fonts/NanumBarunGothicUltraLight.ttf) format('truetype'); }
+@font-face { font-family: 'NanumBarunGothic'; font-style: 'normal'; font-weight:400; src: url(../../assets/fonts/NanumBarunGothic.ttf) format('truetype'); }
+@font-face { font-family: 'NanumBarunGothic'; font-weight:500; src: url(../../assets/fonts/NanumBarunGothicBold.ttf) format('truetype'); }
+@font-face { font-family: 'NanumBarunGothic'; font-weight:300; src: url(../../assets/fonts/NanumBarunGothicLight.ttf) format('truetype'); }
+@font-face { font-family: 'NanumBarunGothic'; font-weight:200; src: url(../../assets/fonts/NanumBarunGothicUltraLight.ttf) format('truetype'); }
 
 html {
   -ms-text-size-adjust: 100%;
