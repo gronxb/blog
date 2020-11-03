@@ -10,8 +10,8 @@ import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 interface ISeo {
-  description: string
-  lang: string
+  description?: string
+  lang?: string
   // meta: {name:string,content:string}[]
   title: string
 }
@@ -25,7 +25,7 @@ interface ISite {
     }
   }
 }
-function SEO({ description, lang = "ko", title = "" }: ISeo) {
+function SEO({ description = "", lang = "ko", title = ""}: ISeo) {
   const { site } = useStaticQuery<ISite>(
     graphql`
       query {
