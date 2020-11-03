@@ -13,10 +13,8 @@ import "./layout.css"
 
 const Layout = ({
   children,
-  headerHeight = `30vh`,
 }: {
   children: React.ReactNode
-  headerHeight?: string
 }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -32,7 +30,6 @@ const Layout = ({
     <>
       <Header
         siteTitle={data.site.siteMetadata?.title || `Title`}
-        height={headerHeight}
       />
       <div
         style={{

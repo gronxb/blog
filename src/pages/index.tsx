@@ -7,6 +7,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { Query } from "../gen/graphql-types"
 import PostView from "../components/PostView"
 import styled from "styled-components"
+import PageTransition from "gatsby-plugin-page-transitions"
 
 const LatestPostListQuery = graphql`
   query LatestPostListQuery {
@@ -38,24 +39,37 @@ const PostList = styled.li`
 const IndexPage = () => {
   const data = useStaticQuery<Query>(LatestPostListQuery)
   return (
-    <Layout>
-      <SEO title="Home" />
+    <PageTransition
+      defaultStyle={{
+        transition: "1s",
+        height: "30vh",
+      }}
+      transitionStyles={{
+        entering: { height: "100px" },
+        entered: { height: "100px" },
+        exiting: { height: "30vh" },
+      }}
+      transitionTime={500}
+    >
+      <Layout>
+        <SEO title="Home" />
 
-      <ul>
-        {console.log(data.allMarkdownRemark.edges)}
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          <PostList key={node.id}>
-            <PostView
-              to={`/${node.frontmatter.title}`}
-              src={node.frontmatter.thumb.childImageSharp.fluid.src}
-              title={node.frontmatter.title}
-              date={node.frontmatter.date}
-              description={node.excerpt}
-            />
-          </PostList>
-        ))}
-      </ul>
-    </Layout>
+        <ul>
+          {console.log(data.allMarkdownRemark.edges)}
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <PostList key={node.id}>
+              <PostView
+                to={`/${node.frontmatter.title}`}
+                src={node.frontmatter.thumb.childImageSharp.fluid.src}
+                title={node.frontmatter.title}
+                date={node.frontmatter.date}
+                description={node.excerpt}
+              />
+            </PostList>
+          ))}
+        </ul>
+      </Layout>
+    </PageTransition>
   )
 }
 

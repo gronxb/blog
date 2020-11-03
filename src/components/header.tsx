@@ -3,10 +3,8 @@ import React from "react"
 
 function Header({
   siteTitle,
-  height = `30vh`,
 }: {
   siteTitle: React.ReactNode
-  height?: string
 }) {
 
   return (
@@ -14,7 +12,7 @@ function Header({
       style={{
         background: `dimgray`,
         marginBottom: `1.45rem`,
-        height: height,
+        height: `30vh`,
         display: `flex`,
         justifyContent: `center`,
         alignItems: `center`,

@@ -15,8 +15,8 @@ const Post: React.FC<IPostTemplateProps> = React.memo(props => {
   return (
     <PageTransition
       defaultStyle={{
-        transition: 'left 500ms cubic-bezier(0.47, 0, 0.75, 0.72)',
-        height: "30vh",
+        transition: '1s',
+        height: "100px",
       }}
       transitionStyles={{
         entering: { height: "100px" },
