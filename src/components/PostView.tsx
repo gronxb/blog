@@ -22,11 +22,11 @@ const Card = styled.div`
       height: 100%;
     }
     .info {
-      padding-bottom: 7.5rem;
+
       p:nth-last-child(1) {
         opacity: 1;
       }
-      transform: translateY(0px);
+      transform: translateY(-7.5rem);
     }
   }
 
