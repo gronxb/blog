@@ -29,6 +29,7 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home"/>
       <ul>
+        {console.log(data.allMarkdownRemark.edges)}
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <li key={node.id}>
             <h2>

@@ -14,7 +14,7 @@ const Post: React.FC<IPostTemplateProps> = React.memo(props => {
     <Layout>
       <SEO title={props.pageContext.title} description={props.pageContext.html} />
       <div dangerouslySetInnerHTML={{ __html: props.pageContext.html }}></div>
-      <Comment repo="gron1gh1/blog-comment" title={props.pageContext.title}/>
+      <Comment repo="gron1gh1/blog" title={props.pageContext.title}/>
     </Layout>
   )
 })
