@@ -1,0 +1,13 @@
+.post {
+  color: red;
+}
+
+.postTransition-appear {
+  opacity: 0;
+}
+
+.postTransition-appear.postTransition-appear-active {
+  opacity: 1;
+  color: red;
+  transition: all 0.4s ease-in-out;
+}

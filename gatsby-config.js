@@ -1,10 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: `Develment Develog`,
-    description: `Develop & Moment, future`,
+    description: `Develop & Moment, Future`,
     author: `@gron1gh1`,
   },
   plugins: [
+    `gatsby-plugin-page-transitions`,
     {
       resolve: `gatsby-plugin-generate-typings`,
       options: {
@@ -12,10 +13,10 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-          name: 'posts',
-          path: `${__dirname}/posts`,
+        name: "posts",
+        path: `${__dirname}/posts`,
       },
     },
     `gatsby-transformer-remark`,
