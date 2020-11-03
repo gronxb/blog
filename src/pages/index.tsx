@@ -8,7 +8,6 @@ import { Query } from "../gen/graphql-types"
 import PostView from "../components/PostView"
 import styled from "styled-components"
 
-
 const LatestPostListQuery = graphql`
   query LatestPostListQuery {
     allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
@@ -35,20 +34,24 @@ const LatestPostListQuery = graphql`
 const PostList = styled.li`
   list-style-type: none;
   margin-bottom: 30px;
-`;
+`
 const IndexPage = () => {
   const data = useStaticQuery<Query>(LatestPostListQuery)
   return (
     <Layout>
       <SEO title="Home" />
-      
+
       <ul>
         {console.log(data.allMarkdownRemark.edges)}
         {data.allMarkdownRemark.edges.map(({ node }) => (
-          
           <PostList key={node.id}>
-            <PostView to={`/${node.frontmatter.title}`} src={node.frontmatter.thumb.childImageSharp.fluid.src} title={node.frontmatter.title} date={node.frontmatter.date}description={node.excerpt} />
-
+            <PostView
+              to={`/${node.frontmatter.title}`}
+              src={node.frontmatter.thumb.childImageSharp.fluid.src}
+              title={node.frontmatter.title}
+              date={node.frontmatter.date}
+              description={node.excerpt}
+            />
           </PostList>
         ))}
       </ul>

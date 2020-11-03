@@ -11,7 +11,13 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({
+  children,
+  headerHeight = `30vh`,
+}: {
+  children: React.ReactNode
+  headerHeight?: string
+}) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -24,7 +30,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <Header
+        siteTitle={data.site.siteMetadata?.title || `Title`}
+        height={headerHeight}
+      />
       <div
         style={{
           margin: `0 auto`,
@@ -33,7 +42,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         }}
       >
         <main>{children}</main>
-      
       </div>
     </>
   )
