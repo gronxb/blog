@@ -12,6 +12,7 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
                             html
                             frontmatter {
                                 title
+                                date
                             }
                         }
                     }
