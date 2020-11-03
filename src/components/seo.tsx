@@ -25,7 +25,7 @@ interface ISite {
     }
   }
 }
-function SEO({ description, lang, title }: ISeo) {
+function SEO({ description, lang = "ko", title = "" }: ISeo) {
   const { site } = useStaticQuery<ISite>(
     graphql`
       query {
@@ -87,18 +87,5 @@ function SEO({ description, lang, title }: ISeo) {
     />
   )
 }
-
-// SEO.defaultProps = {
-//   lang: `en`,
-//   meta: [],
-//   description: ``,
-// }
-
-// SEO.propTypes = {
-//   description: PropTypes.string,
-//   lang: PropTypes.string,
-//   meta: PropTypes.arrayOf(PropTypes.object),
-//   title: PropTypes.string.isRequired,
-// }
 
 export default SEO
