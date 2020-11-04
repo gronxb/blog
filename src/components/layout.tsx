@@ -7,14 +7,16 @@
 
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-
+import PageTransition from "gatsby-plugin-page-transitions"
 import Header from "./header"
 import "./layout.css"
 
 const Layout = ({
   children,
+  small = false,
 }: {
   children: React.ReactNode
+  small?: boolean
 }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -28,9 +30,8 @@ const Layout = ({
 
   return (
     <>
-      <Header
-        siteTitle={data.site.siteMetadata?.title || `Title`}
-      />
+      <Header siteTitle={data.site.siteMetadata?.title || `Title`} small={small}/>
+
       <div
         style={{
           margin: `0 auto`,
@@ -38,7 +39,9 @@ const Layout = ({
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
-        <main>{children}</main>
+        <PageTransition>
+          <main>{children}</main>
+        </PageTransition>
       </div>
     </>
   )
