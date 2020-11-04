@@ -42,7 +42,6 @@ const IndexPage = () => {
       <SEO title="Home" />
 
       <ul>
-        {console.log(data.allMarkdownRemark.edges)}
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <PostList key={node.id}>
             <PostView

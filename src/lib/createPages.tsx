@@ -31,6 +31,7 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
       context: {
         html: node.html,
         title: node.frontmatter.title,
+        date: node.frontmatter.date,
       },
       component: path.resolve(__dirname, "../components/post.tsx"),
     })

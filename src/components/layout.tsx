@@ -30,7 +30,7 @@ const Layout = ({
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} small={small}/>
+      <Header siteTitle="Develop & Moment, Future" small={small}/>
 
       <div
         style={{

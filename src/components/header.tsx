@@ -20,7 +20,7 @@ function Header({
   }
   const transitionStyle = {
     entering: { height: small === false ? "30vh" : "100px" },
-    entered: { height: small === false ? "30vh" : "100px"},
+    entered: { height: small === false ? "30vh" : "100px" },
     exiting: { height: small === false ? "100px" : "30vh" },
   }
   return (

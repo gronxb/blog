@@ -3,11 +3,11 @@ import Layout from "./layout"
 import { ITemplateProps } from "../interface"
 import SEO from "./seo"
 import Comment from "./comment"
-import "./post.css"
 
 type IPostTemplateProps = ITemplateProps<{
   html: string
   title: string
+  date: string
 }>
 
 const Post: React.FC<IPostTemplateProps> = React.memo(props => {
@@ -18,7 +18,12 @@ const Post: React.FC<IPostTemplateProps> = React.memo(props => {
         description={props.pageContext.html}
       />
       <div dangerouslySetInnerHTML={{ __html: props.pageContext.html }}></div>
-      <Comment repo="gron1gh1/blog" title={props.pageContext.title} />
+
+      <Comment
+        repo="gron1gh1/blog"
+        title={props.pageContext.title}
+        date={props.pageContext.date}
+      />
     </Layout>
   )
 })
