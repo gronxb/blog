@@ -7,6 +7,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { Query } from "../gen/graphql-types"
 import PostView from "../components/PostView"
 import {PostList} from "../components/styled"
+import {kebabCase} from "../lib/utils"
 
 const LatestPostListQuery = graphql`
   query LatestPostListQuery {
@@ -41,7 +42,7 @@ const IndexPage = () => {
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <PostList key={node.id}>
             <PostView
-              to={`/${node.frontmatter.title}`}
+              to={`/${kebabCase(node.frontmatter.title)}`}
               src={node.frontmatter.thumb.childImageSharp.fluid.src}
               title={node.frontmatter.title}
               date={node.frontmatter.date}

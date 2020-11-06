@@ -1,7 +1,7 @@
 import { CreatePagesArgs } from "gatsby"
 import path from "path"
 import { Query } from "../gen/graphql-types"
-const kebabCase = string => string.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g, '-').toLowerCase()
+import { kebabCase } from "./utils"
 export async function createPages({ actions, graphql }: CreatePagesArgs) {
   const { createPage } = actions
 
@@ -20,7 +20,16 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
       }
     }
   `)
-
+  const { tagData, tagErrors } = await graphql<Query>(`
+    {
+      allMarkdownRemark {
+        group(field: frontmatter___tags) {
+          tag: fieldValue
+          totalCount
+        }
+      }
+    }
+  `)
   if (errors) {
     throw errors
   }
@@ -32,6 +41,18 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
         html: node.html,
         title: node.frontmatter.title,
         date: node.frontmatter.date,
+      },
+      component: path.resolve(__dirname, "../templates/post.tsx"),
+    })
+  })
+
+  tagData?.allMarkdownRemark.edges.forEach(({ node }: any) => { // 여기부터
+    createPage({
+      path: kebabCase(node.frontmatter.title),
+      context: {
+        html: node.html,
+        title: node.frontmatter.title,
+        tag: node.frontmatter.date,
       },
       component: path.resolve(__dirname, "../templates/post.tsx"),
     })
