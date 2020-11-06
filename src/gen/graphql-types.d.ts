@@ -739,6 +739,7 @@ export type FileFieldsEnum =
   | 'childMarkdownRemark___frontmatter___thumb___publicURL'
   | 'childMarkdownRemark___frontmatter___thumb___id'
   | 'childMarkdownRemark___frontmatter___thumb___children'
+  | 'childMarkdownRemark___frontmatter___tags'
   | 'childMarkdownRemark___excerpt'
   | 'childMarkdownRemark___rawMarkdownBody'
   | 'childMarkdownRemark___fileAbsolutePath'
@@ -1635,6 +1636,7 @@ export type MarkdownRemarkFieldsEnum =
   | 'frontmatter___thumb___childMarkdownRemark___timeToRead'
   | 'frontmatter___thumb___childMarkdownRemark___tableOfContents'
   | 'frontmatter___thumb___childMarkdownRemark___children'
+  | 'frontmatter___tags'
   | 'excerpt'
   | 'rawMarkdownBody'
   | 'fileAbsolutePath'
@@ -1759,6 +1761,7 @@ export type MarkdownRemarkFrontmatter = {
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
   thumb?: Maybe<File>;
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 
@@ -1773,6 +1776,7 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
   thumb?: Maybe<FileFilterInput>;
+  tags?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MarkdownRemarkGroupConnection = {

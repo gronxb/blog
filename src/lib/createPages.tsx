@@ -1,7 +1,7 @@
 import { CreatePagesArgs } from "gatsby"
 import path from "path"
 import { Query } from "../gen/graphql-types"
-
+const kebabCase = string => string.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g, '-').toLowerCase()
 export async function createPages({ actions, graphql }: CreatePagesArgs) {
   const { createPage } = actions
 
@@ -27,7 +27,7 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
 
   data?.allMarkdownRemark.edges.forEach(({ node }: any) => {
     createPage({
-      path: node.frontmatter.title,
+      path: kebabCase(node.frontmatter.title),
       context: {
         html: node.html,
         title: node.frontmatter.title,
