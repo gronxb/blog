@@ -33,7 +33,7 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
         title: node.frontmatter.title,
         date: node.frontmatter.date,
       },
-      component: path.resolve(__dirname, "../components/post.tsx"),
+      component: path.resolve(__dirname, "../templates/post.tsx"),
     })
   })
 }

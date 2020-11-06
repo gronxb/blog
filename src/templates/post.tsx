@@ -1,8 +1,8 @@
 import React from "react"
-import Layout from "./layout"
+import Layout from "../components/layout"
 import { ITemplateProps } from "../interface"
-import SEO from "./seo"
-import Comment from "./comment"
+import SEO from "../components/seo"
+import Comment from "../components/comment"
 
 type IPostTemplateProps = ITemplateProps<{
   html: string
