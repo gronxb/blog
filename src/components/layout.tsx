@@ -16,9 +16,11 @@ import "./layout.css"
 const Layout = ({
   children,
   small = false,
+  animation = true,
 }: {
   children: React.ReactNode
   small?: boolean
+  animation?: boolean
 }) => {
   const data = useStaticQuery<Query>(graphql`
     query {
@@ -33,26 +35,30 @@ const Layout = ({
 
   return (
     <>
-      <Header siteTitle="Develop & Moment, Future" small={small} />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent:"center",
-        }}
-      >
-        <TagView group={data.allMarkdownRemark.group}></TagView>
+        <Header
+          siteTitle="Develop & Moment, Future"
+          small={small}
+          animation={animation}
+        />
         <div
           style={{
-            maxWidth: 960,
-            flex: 1,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
           }}
         >
-          <PageTransition>
-            <main>{children}</main>
-          </PageTransition>
+          <TagView group={data.allMarkdownRemark.group}></TagView>
+          <div
+            style={{
+              maxWidth: 960,
+              flex: 1,
+            }}
+          >
+            <PageTransition>
+              <main>{children}</main>
+            </PageTransition>
+          </div>
         </div>
-      </div>
     </>
   )
 }

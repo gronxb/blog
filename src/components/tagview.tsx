@@ -1,18 +1,26 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { MarkdownRemarkGroupConnection } from "../gen/graphql-types"
 import styled from "styled-components"
+import { kebabCase } from "../lib/utils"
 
 const TagWrapper = styled.nav`
-padding: 1.5rem;
-width:250px;
-margin-right:50px;
+  padding: 1.5rem;
+  width: 250px;
+  margin-right: 50px;
 `
-const TagUl = styled.ul`
-   
-`;
 const TagItem = styled.li`
-font-size: 14px;
+  font-size: 14px;
+  list-style: none;
+  a:link {
+    color: black;
+  }
+  a:hover {
+    text-decoration: underline !important;
+  }
+  a:visited {
+    color: black;
+  }
 `
 export default function TagView({
   group,
@@ -21,25 +29,16 @@ export default function TagView({
 }) {
   return (
     <TagWrapper>
-       Tags
+      Tags
       <hr />
-      <TagUl>
-        {group.map(({ fieldValue, totalCount }) => (
-          <TagItem key={fieldValue}>
+      {group.map(({ fieldValue, totalCount }) => (
+        <TagItem key={fieldValue}>
+          <Link to={`/${kebabCase(fieldValue)}`} style={{ textDecoration: "none" }}>
             {fieldValue} ({totalCount})
-          </TagItem>
-        ))}
-         {group.map(({ fieldValue, totalCount }) => (
-          <TagItem key={fieldValue}>
-            {fieldValue} ({totalCount})
-          </TagItem>
-        ))}
-         {group.map(({ fieldValue, totalCount }) => (
-          <TagItem key={fieldValue}>
-            {fieldValue} ({totalCount})
-          </TagItem>
-        ))}
-      </TagUl>
+          </Link>
+        </TagItem>
+      ))}
+      
     </TagWrapper>
   )
 }

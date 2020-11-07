@@ -7,20 +7,29 @@ import { Query, MarkdownRemarkConnection } from "../gen/graphql-types"
 import PostView from "../components/PostView"
 import { PostList } from "../components/styled"
 import { kebabCase } from "../lib/utils"
+import { useSelector } from "react-redux"
+import { store } from "../state/Reducer"
+import { Provider } from "react-redux"
 
 type ITagTemplateProps = ITemplateProps<{
   tag: string
 }>
 
+
 const Post: React.FC<ITagTemplateProps> = React.memo(props => {
-  const {edges} : MarkdownRemarkConnection = (props.data as Query).allMarkdownRemark;
-  console.log(props.data,edges);
+  const reduxAnimation : boolean = useSelector(({animation}) => animation)
+  console.log(reduxAnimation) ///////
+
+
+  const {
+    edges,
+  }: MarkdownRemarkConnection = (props.data as Query).allMarkdownRemark
   return (
-    <Layout small>
+    <Layout animation={reduxAnimation}>
       <SEO title={props.pageContext.tag} description={props.pageContext.tag} />
 
       <ul>
-        {edges.map(({ node } : any) => (
+        {edges.map(({ node }: any) => (
           <PostList key={node.id}>
             <PostView
               to={`/${kebabCase(node.frontmatter.title)}`}
@@ -36,7 +45,15 @@ const Post: React.FC<ITagTemplateProps> = React.memo(props => {
   )
 })
 
-export default Post
+const PostWrapper: React.FC<ITagTemplateProps> = React.memo(props => {
+  return (
+    <Provider store={store}>
+      <Post {...props} />
+    </Provider>
+  )
+})
+
+export default PostWrapper
 
 export const pageQuery = graphql`
   query($tag: String) {

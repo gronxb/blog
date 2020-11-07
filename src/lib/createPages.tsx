@@ -42,7 +42,7 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
       })
     })
     data.allMarkdownRemark.group.forEach(({ fieldValue, totalCount }) => {
-      console.log("create tags ", `/${fieldValue}`)
+      console.log("create tags ", `/${kebabCase(fieldValue)}`)
       createPage({
         path: kebabCase(fieldValue),
         context: {
