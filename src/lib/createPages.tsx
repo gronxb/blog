@@ -20,7 +20,7 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
       }
     }
   `)
-  const { tagData, tagErrors } = await graphql<Query>(`
+  const { data: tagData, errors: tagErrors } = await graphql<Query>(`
     {
       allMarkdownRemark {
         group(field: frontmatter___tags) {
@@ -33,28 +33,34 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
   if (errors) {
     throw errors
   }
+  if (tagErrors) {
+    throw tagErrors
+  }
 
-  data?.allMarkdownRemark.edges.forEach(({ node }: any) => {
-    createPage({
-      path: kebabCase(node.frontmatter.title),
-      context: {
-        html: node.html,
-        title: node.frontmatter.title,
-        date: node.frontmatter.date,
-      },
-      component: path.resolve(__dirname, "../templates/post.tsx"),
+  if (data) {
+    data.allMarkdownRemark.edges.forEach(({ node }: any) => {
+      createPage({
+        path: kebabCase(node.frontmatter.title),
+        context: {
+          html: node.html,
+          title: node.frontmatter.title,
+          date: node.frontmatter.date,
+        },
+        component: path.resolve(__dirname, "../templates/post.tsx"),
+      })
     })
-  })
+  }
 
-  tagData?.allMarkdownRemark.edges.forEach(({ node }: any) => { // 여기부터
-    createPage({
-      path: kebabCase(node.frontmatter.title),
-      context: {
-        html: node.html,
-        title: node.frontmatter.title,
-        tag: node.frontmatter.date,
-      },
-      component: path.resolve(__dirname, "../templates/post.tsx"),
+  if (tagData) {
+    tagData.allMarkdownRemark.group.forEach((tags) => {
+      // 여기부터
+      createPage({
+        path: tags.fieldValue,
+        context: {
+          tag: tags.fieldValue,
+        },
+        component: path.resolve(__dirname, "../templates/tags.tsx"),
+      })
     })
-  })
+  }
 }

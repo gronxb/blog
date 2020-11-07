@@ -3,13 +3,12 @@ import Layout from "../components/layout"
 import { ITemplateProps } from "../interface"
 import SEO from "../components/seo"
 import { graphql, useStaticQuery } from "gatsby"
-import { Query } from "../gen/graphql-types"
+import { Query, MarkdownRemarkConnection } from "../gen/graphql-types"
 import PostView from "../components/PostView"
-import {PostList} from "../components/styled"
-import {kebabCase} from "../lib/utils"
+import { PostList } from "../components/styled"
+import { kebabCase } from "../lib/utils"
 
-type IPostTemplateProps = ITemplateProps<{
-  title: string
+type ITagTemplateProps = ITemplateProps<{
   tag: string
 }>
 
@@ -34,12 +33,39 @@ query($tag: String) {
     }
   }
  */
-const LatestPostListWithTagQuery = graphql`
+const Post: React.FC<ITagTemplateProps> = React.memo(props => {
+  const {edges} : MarkdownRemarkConnection = props.data as MarkdownRemarkConnection;
+  return (
+    <Layout small>
+      <SEO title={props.pageContext.tag} description={props.pageContext.tag} />
+
+      <ul>
+        {edges.map(({ node } : any) => (
+          <PostList key={node.id}>
+            <PostView
+              to={`/${kebabCase(node.frontmatter.title)}`}
+              src={node.frontmatter.thumb.childImageSharp.fluid.src}
+              title={node.frontmatter.title}
+              date={node.frontmatter.date}
+              description={node.excerpt}
+            />
+          </PostList>
+        ))}
+      </ul>
+    </Layout>
+  )
+})
+
+export default Post
+
+export const pageQuery = graphql`
   query($tag: String) {
     allMarkdownRemark(
-        sort: { order: DESC, fields: frontmatter___date }
-        filter: { frontmatter: { tags: { in: [$tag] } } }
+      limit: 2000
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
+      totalCount
       edges {
         node {
           excerpt(truncate: true, pruneLength: 200)
@@ -60,30 +86,3 @@ const LatestPostListWithTagQuery = graphql`
     }
   }
 `
-const Post: React.FC<IPostTemplateProps> = React.memo(props => {
-  const data = useStaticQuery<Query>(LatestPostListWithTagQuery)
-  return (
-    <Layout small>
-      <SEO
-        title={props.pageContext.title}
-        description={props.pageContext.tag}
-      />
-
-      <ul>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          <PostList key={node.id}>
-            <PostView
-              to={`/${kebabCase(node.frontmatter.title)}`}
-              src={node.frontmatter.thumb.childImageSharp.fluid.src}
-              title={node.frontmatter.title}
-              date={node.frontmatter.date}
-              description={node.excerpt}
-            />
-          </PostList>
-        ))}
-      </ul>
-    </Layout>
-  )
-})
-
-export default Post
