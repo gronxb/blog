@@ -80,6 +80,7 @@ interface IPostView {
   title: string
   date: string
   description: string
+  onClick?: ((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void)
 }
 export default function PostView({
   to,
@@ -87,9 +88,10 @@ export default function PostView({
   title,
   date,
   description,
-}: IPostView) {
+  onClick
+}: IPostView ) {
   return (
-    <Link to={to} style={{ textDecoration: "none" }}>
+    <Link to={to} style={{ textDecoration: "none" }} onClick={onClick}>
       <Card>
         <img src={src} />
         <div className="bg-bar" />
@@ -102,3 +104,4 @@ export default function PostView({
     </Link>
   )
 }
+

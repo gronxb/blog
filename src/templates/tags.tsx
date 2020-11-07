@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../components/layout"
 import { ITemplateProps } from "../interface"
 import SEO from "../components/seo"
@@ -7,17 +7,19 @@ import { Query, MarkdownRemarkConnection } from "../gen/graphql-types"
 import PostView from "../components/PostView"
 import { PostList } from "../components/styled"
 import { kebabCase } from "../lib/utils"
-
-
+import { Provider, useDispatch } from "react-redux"
+import { BlogActions, store } from "../state/reducer"
 type ITagTemplateProps = ITemplateProps<{
   tag: string
 }>
 
-
-const Post: React.FC<ITagTemplateProps> = React.memo(props => {
+const Tags: React.FC<ITagTemplateProps> = React.memo(props => {
   const {
     edges,
   }: MarkdownRemarkConnection = (props.data as Query).allMarkdownRemark
+
+  const dispatch = useDispatch()
+
   return (
     <Layout>
       <SEO title={props.pageContext.tag} description={props.pageContext.tag} />
@@ -31,6 +33,9 @@ const Post: React.FC<ITagTemplateProps> = React.memo(props => {
               title={node.frontmatter.title}
               date={node.frontmatter.date}
               description={node.excerpt}
+              onClick={() => {
+                dispatch(BlogActions.toggleAnimation(true))
+              }}
             />
           </PostList>
         ))}
@@ -39,7 +44,15 @@ const Post: React.FC<ITagTemplateProps> = React.memo(props => {
   )
 })
 
-export default Post
+const TagWrapper: React.FC<ITagTemplateProps> = React.memo(props => {
+  return (
+    <Provider store={store}>
+      <Tags {...props} />
+    </Provider>
+  )
+})
+
+export default TagWrapper
 
 export const pageQuery = graphql`
   query($tag: String) {

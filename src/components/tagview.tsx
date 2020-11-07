@@ -1,6 +1,11 @@
 import React, { useEffect, useRef } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import { MarkdownRemark, MarkdownRemarkEdge, MarkdownRemarkFrontmatter, MarkdownRemarkGroupConnection } from "../gen/graphql-types"
+import {
+  MarkdownRemark,
+  MarkdownRemarkEdge,
+  MarkdownRemarkFrontmatter,
+  MarkdownRemarkGroupConnection,
+} from "../gen/graphql-types"
 import styled from "styled-components"
 import { kebabCase } from "../lib/utils"
 import { useDispatch, useSelector } from "react-redux"
@@ -27,18 +32,18 @@ const TagItem = styled.li`
 
 export default function TagView({
   group,
-  nodes
+  totalCount,
+  nodes,
 }: {
   group: MarkdownRemarkGroupConnection[]
+  totalCount: number
   nodes: MarkdownRemark[]
 }) {
   const dispatch = useDispatch()
 
   useEffect(() => {
-        // if (location.pathname === "/") dispatch(BlogActions.toggleAnimation(false))
-        // else dispatch(BlogActions.toggleAnimation(true))
-
-   
+    // if (location.pathname === "/") dispatch(BlogActions.toggleAnimation(false))
+    // else dispatch(BlogActions.toggleAnimation(true))
     // if (location.pathname === "/") dispatch(BlogActions.toggleAnimation(false))
     // else dispatch(BlogActions.toggleAnimation(true))
   })
@@ -46,12 +51,22 @@ export default function TagView({
     <TagWrapper>
       Tags
       <hr />
+      <TagItem key={"All-Post"}>
+        <Link onClick={() => {}} to={`/`} style={{ textDecoration: "none" }}>
+          All Post ({totalCount})
+        </Link>
+      </TagItem>
       {group.map(({ fieldValue, totalCount }) => (
         <TagItem key={fieldValue}>
           <Link
-            onClick={()=>{
-
-                
+            onClick={() => {
+              group.some(({ fieldValue }) => {
+                console.log(`${kebabCase(fieldValue)}`)
+                if (`/${fieldValue}` === decodeURI(location.pathname)) {
+                  dispatch(BlogActions.toggleAnimation(false))
+                  return true
+                }
+              })
             }}
             to={`/${kebabCase(fieldValue)}`}
             style={{ textDecoration: "none" }}

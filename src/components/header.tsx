@@ -14,7 +14,7 @@ function Header({
   const reduxAnimation: boolean = useSelector(
     ({ animation }: { animation: boolean }) => animation
   )
-  
+
   useEffect(()=>{
     console.log("useEffect",reduxAnimation);
   },[reduxAnimation]);
@@ -33,6 +33,7 @@ function Header({
     entered: { height: small === false ? "30vh" : "100px" },
     exiting: { height: small === false ? "100px" : "30vh" },
   }
+
   return (
     <PageTransition
       defaultStyle={defaultStyle}
@@ -65,13 +66,13 @@ function Header({
 function HeaderWrapper({
   siteTitle,
   small = false,
-} : {
+}: {
   siteTitle: React.ReactNode
   small?: boolean
-}){
+}) {
   return (
     <Provider store={store}>
-      <Header siteTitle={siteTitle} small={small}/>
+      <Header siteTitle={siteTitle} small={small} />
     </Provider>
   )
 }

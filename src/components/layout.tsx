@@ -25,6 +25,7 @@ const Layout = ({
   const data = useStaticQuery<Query>(graphql`
     query {
       allMarkdownRemark {
+        totalCount
         group(field: frontmatter___tags) {
           fieldValue
           totalCount
@@ -35,28 +36,32 @@ const Layout = ({
 
   return (
     <>
-      <Header siteTitle="Develop & Moment, Future" small={small} />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-        }}
-      >
-        <Provider store={store}>
-          <TagView group={data.allMarkdownRemark.group} nodes={data.allMarkdownRemark.nodes}></TagView>
-        </Provider>
+      <Provider store={store}>
+        <Header siteTitle="Develop & Moment, Future" small={small} />
         <div
           style={{
-            maxWidth: 960,
-            flex: 1,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
           }}
         >
-          <PageTransition>
-            <main>{children}</main>
-          </PageTransition>
+          <TagView
+            group={data.allMarkdownRemark.group}
+            nodes={data.allMarkdownRemark.nodes}
+            totalCount={data.allMarkdownRemark.totalCount}
+          ></TagView>
+          <div
+            style={{
+              maxWidth: 960,
+              flex: 1,
+            }}
+          >
+            <PageTransition>
+              <main>{children}</main>
+            </PageTransition>
+          </div>
         </div>
-      </div>
+      </Provider>
     </>
   )
 }
