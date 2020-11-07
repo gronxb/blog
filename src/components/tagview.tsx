@@ -52,7 +52,24 @@ export default function TagView({
       Tags
       <hr />
       <TagItem key={"All-Post"}>
-        <Link onClick={() => {}} to={`/`} style={{ textDecoration: "none" }}>
+        <Link
+          onClick={() => {
+            group.some(({ fieldValue }) => {
+              console.log(
+                `/${kebabCase(fieldValue)}`,
+                decodeURI(location.pathname)
+              )
+              if (
+                `/${kebabCase(fieldValue)}` === decodeURI(location.pathname)
+              ) {
+                dispatch(BlogActions.toggleAnimation(false))
+                return true
+              }
+            })
+          }}
+          to={`/`}
+          style={{ textDecoration: "none" }}
+        >
           All Post ({totalCount})
         </Link>
       </TagItem>
@@ -61,8 +78,13 @@ export default function TagView({
           <Link
             onClick={() => {
               group.some(({ fieldValue }) => {
-                console.log(`${kebabCase(fieldValue)}`)
-                if (`/${fieldValue}` === decodeURI(location.pathname)) {
+                console.log(
+                  `/${kebabCase(fieldValue)}`,
+                  decodeURI(location.pathname)
+                )
+                if (
+                  `/${kebabCase(fieldValue)}` === decodeURI(location.pathname)
+                ) {
                   dispatch(BlogActions.toggleAnimation(false))
                   return true
                 }
