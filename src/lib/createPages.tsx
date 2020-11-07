@@ -18,7 +18,7 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
           }
         }
         group(field: frontmatter___tags) {
-          tag: fieldValue
+          fieldValue
           totalCount
         }
       }
@@ -30,28 +30,26 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
   }
 
   if (data) {
-    data.allMarkdownRemark.edges.forEach(({ node }: any) => {
+    data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
-        path: kebabCase(node.frontmatter.title),
+        path: kebabCase(node.frontmatter && node.frontmatter.title),
         context: {
           html: node.html,
-          title: node.frontmatter.title,
-          date: node.frontmatter.date,
+          title: node.frontmatter ? node.frontmatter.title : "",
+          date: node.frontmatter ? node.frontmatter.date : "",
         },
         component: path.resolve(__dirname, "../templates/post.tsx"),
       })
     })
-    data.allMarkdownRemark.group.forEach(({tag,totalCount} : any) => {
-      // 여기부터
-      console.log("create tags ",`/${tag}`)
+    data.allMarkdownRemark.group.forEach(({ fieldValue, totalCount }) => {
+      console.log("create tags ", `/${fieldValue}`)
       createPage({
-        path: "/" + tag,
+        path: kebabCase(fieldValue),
         context: {
-          tag,
+          tag: fieldValue,
         },
         component: path.resolve(__dirname, "../templates/tags.tsx"),
       })
     })
   }
-
 }

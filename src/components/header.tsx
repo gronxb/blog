@@ -10,7 +10,7 @@ function Header({
   small?: boolean
 }) {
   const defaultStyle = {
-    transition: "height 500ms",
+    transition: "height 350ms",
     background: `dimgray`,
     marginBottom: `1.45rem`,
     display: `flex`,
@@ -27,7 +27,6 @@ function Header({
     <PageTransition
       defaultStyle={defaultStyle}
       transitionStyles={transitionStyle}
-      transitionTime={500}
     >
       <header>
         <div

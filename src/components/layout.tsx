@@ -7,8 +7,10 @@
 
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { Query } from "../gen/graphql-types"
 import PageTransition from "gatsby-plugin-page-transitions"
 import Header from "./header"
+import TagView from "./tagview"
 import "./layout.css"
 
 const Layout = ({
@@ -18,11 +20,12 @@ const Layout = ({
   children: React.ReactNode
   small?: boolean
 }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
+  const data = useStaticQuery<Query>(graphql`
+    query {
+      allMarkdownRemark {
+        group(field: frontmatter___tags) {
+          fieldValue
+          totalCount
         }
       }
     }
@@ -30,18 +33,25 @@ const Layout = ({
 
   return (
     <>
-      <Header siteTitle="Develop & Moment, Future" small={small}/>
-
+      <Header siteTitle="Develop & Moment, Future" small={small} />
       <div
         style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
+          display: "flex",
+          flexDirection: "row",
+          justifyContent:"center",
         }}
       >
-        <PageTransition>
-          <main>{children}</main>
-        </PageTransition>
+        <TagView group={data.allMarkdownRemark.group}></TagView>
+        <div
+          style={{
+            maxWidth: 960,
+            flex: 1,
+          }}
+        >
+          <PageTransition>
+            <main>{children}</main>
+          </PageTransition>
+        </div>
       </div>
     </>
   )

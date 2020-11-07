@@ -10,33 +10,33 @@ import {PostList} from "../components/styled"
 import {kebabCase} from "../lib/utils"
 
 const LatestPostListQuery = graphql`
-  query LatestPostListQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
-      edges {
-        node {
-          excerpt(truncate: true, pruneLength: 200)
-          frontmatter {
-            title
-            date(formatString: "YYYY-MM-DD HH:mm:ss")
-            thumb {
-              childImageSharp {
-                fluid(maxWidth: 700, maxHeight: 300) {
-                  ...GatsbyImageSharpFluid
-                }
+query LatestPostListQuery {
+  allMarkdownRemark(sort: {order: DESC, fields: frontmatter___date}) {
+    edges {
+      node {
+        excerpt(truncate: true, pruneLength: 200)
+        frontmatter {
+          title
+          date(formatString: "YYYY-MM-DD HH:mm:ss")
+          thumb {
+            childImageSharp {
+              fluid(maxWidth: 700, maxHeight: 300) {
+                ...GatsbyImageSharpFluid
               }
             }
           }
-          id
         }
+        id
       }
     }
   }
+}
 `
 const IndexPage = () => {
   const data = useStaticQuery<Query>(LatestPostListQuery)
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="Home" description="Home"/>
 
       <ul>
         {data.allMarkdownRemark.edges.map(({ node }) => (

@@ -12,27 +12,6 @@ type ITagTemplateProps = ITemplateProps<{
   tag: string
 }>
 
-/*
-query($tag: String) {
-    allMarkdownRemark(
-      limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
-        }
-      }
-    }
-  }
- */
 const Post: React.FC<ITagTemplateProps> = React.memo(props => {
   const {edges} : MarkdownRemarkConnection = (props.data as Query).allMarkdownRemark;
   console.log(props.data,edges);
