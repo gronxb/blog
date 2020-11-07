@@ -7,9 +7,7 @@ import { Query, MarkdownRemarkConnection } from "../gen/graphql-types"
 import PostView from "../components/PostView"
 import { PostList } from "../components/styled"
 import { kebabCase } from "../lib/utils"
-import { useSelector } from "react-redux"
-import { store } from "../state/Reducer"
-import { Provider } from "react-redux"
+
 
 type ITagTemplateProps = ITemplateProps<{
   tag: string
@@ -17,15 +15,11 @@ type ITagTemplateProps = ITemplateProps<{
 
 
 const Post: React.FC<ITagTemplateProps> = React.memo(props => {
-  const reduxAnimation : boolean = useSelector(({animation}) => animation)
-  console.log(reduxAnimation) ///////
-
-
   const {
     edges,
   }: MarkdownRemarkConnection = (props.data as Query).allMarkdownRemark
   return (
-    <Layout animation={reduxAnimation}>
+    <Layout>
       <SEO title={props.pageContext.tag} description={props.pageContext.tag} />
 
       <ul>
@@ -45,15 +39,7 @@ const Post: React.FC<ITagTemplateProps> = React.memo(props => {
   )
 })
 
-const PostWrapper: React.FC<ITagTemplateProps> = React.memo(props => {
-  return (
-    <Provider store={store}>
-      <Post {...props} />
-    </Provider>
-  )
-})
-
-export default PostWrapper
+export default Post
 
 export const pageQuery = graphql`
   query($tag: String) {

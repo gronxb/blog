@@ -3,6 +3,8 @@ module.exports = {
     title: `Develment Develog`,
     description: `Develop & Moment, Future`,
     author: `@gron1gh1`,
+    siteUrl: "http://localhost:8000/"
+
   },
   plugins: [
     `gatsby-plugin-page-transitions`,

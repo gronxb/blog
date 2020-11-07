@@ -12,15 +12,15 @@ import PageTransition from "gatsby-plugin-page-transitions"
 import Header from "./header"
 import TagView from "./tagview"
 import "./layout.css"
+import { Provider } from "react-redux"
+import { store } from "../state/reducer"
 
 const Layout = ({
   children,
   small = false,
-  animation = true,
 }: {
   children: React.ReactNode
   small?: boolean
-  animation?: boolean
 }) => {
   const data = useStaticQuery<Query>(graphql`
     query {
@@ -35,30 +35,33 @@ const Layout = ({
 
   return (
     <>
-        <Header
-          siteTitle="Develop & Moment, Future"
-          small={small}
-          animation={animation}
-        />
+     <Provider store={store}>
+      <Header
+        siteTitle="Develop & Moment, Future"
+        small={small}
+      />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
+      >
+       
+          <TagView group={data.allMarkdownRemark.group}></TagView>
+       
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
+            maxWidth: 960,
+            flex: 1,
           }}
         >
-          <TagView group={data.allMarkdownRemark.group}></TagView>
-          <div
-            style={{
-              maxWidth: 960,
-              flex: 1,
-            }}
-          >
-            <PageTransition>
-              <main>{children}</main>
-            </PageTransition>
-          </div>
+          <PageTransition>
+            <main>{children}</main>
+          </PageTransition>
         </div>
+      </div>
+       </Provider>
     </>
   )
 }
