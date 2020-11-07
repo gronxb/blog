@@ -5,8 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql, useStaticQuery } from "gatsby"
 import { Query } from "../gen/graphql-types"
-import PostView from "../components/PostView"
-import { PostList } from "../components/styled"
+import PostList from "../components/PostView"
 import { kebabCase } from "../lib/utils"
 import { Provider, useDispatch } from "react-redux"
 import { BlogActions, store } from "../state/reducer"
@@ -36,26 +35,10 @@ const LatestPostListQuery = graphql`
 `
 
 const IndexView = () => {
-  
-  const dispatch = useDispatch()
   const data = useStaticQuery<Query>(LatestPostListQuery)
-
   return (
     <ul>
-      {data.allMarkdownRemark.edges.map(({ node }) => (
-        <PostList key={node.id}>
-          <PostView
-            to={`/${kebabCase(node.frontmatter.title)}`}
-            src={node.frontmatter.thumb.childImageSharp.fluid.src}
-            title={node.frontmatter.title}
-            date={node.frontmatter.date}
-            description={node.excerpt}
-            onClick={() => {
-              dispatch(BlogActions.toggleAnimation(true))
-            }}
-          />
-        </PostList>
-      ))}
+      {PostList(data.allMarkdownRemark.edges)}
     </ul>
   )
 }

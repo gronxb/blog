@@ -41,12 +41,6 @@ export default function TagView({
 }) {
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    // if (location.pathname === "/") dispatch(BlogActions.toggleAnimation(false))
-    // else dispatch(BlogActions.toggleAnimation(true))
-    // if (location.pathname === "/") dispatch(BlogActions.toggleAnimation(false))
-    // else dispatch(BlogActions.toggleAnimation(true))
-  })
   return (
     <TagWrapper>
       Tags
@@ -55,10 +49,6 @@ export default function TagView({
         <Link
           onClick={() => {
             group.some(({ fieldValue }) => {
-              console.log(
-                `/${kebabCase(fieldValue)}`,
-                decodeURI(location.pathname)
-              )
               if (
                 `/${kebabCase(fieldValue)}` === decodeURI(location.pathname)
               ) {

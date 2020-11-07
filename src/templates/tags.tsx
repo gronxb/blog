@@ -5,10 +5,10 @@ import SEO from "../components/seo"
 import { graphql, useStaticQuery } from "gatsby"
 import { Query, MarkdownRemarkConnection } from "../gen/graphql-types"
 import PostView from "../components/PostView"
-import { PostList } from "../components/styled"
 import { kebabCase } from "../lib/utils"
 import { Provider, useDispatch } from "react-redux"
 import { BlogActions, store } from "../state/reducer"
+import PostList from "../components/PostView"
 type ITagTemplateProps = ITemplateProps<{
   tag: string
 }>
@@ -18,27 +18,12 @@ const Tags: React.FC<ITagTemplateProps> = React.memo(props => {
     edges,
   }: MarkdownRemarkConnection = (props.data as Query).allMarkdownRemark
 
-  const dispatch = useDispatch()
-
   return (
     <Layout>
       <SEO title={props.pageContext.tag} description={props.pageContext.tag} />
 
       <ul>
-        {edges.map(({ node }: any) => (
-          <PostList key={node.id}>
-            <PostView
-              to={`/${kebabCase(node.frontmatter.title)}`}
-              src={node.frontmatter.thumb.childImageSharp.fluid.src}
-              title={node.frontmatter.title}
-              date={node.frontmatter.date}
-              description={node.excerpt}
-              onClick={() => {
-                dispatch(BlogActions.toggleAnimation(true))
-              }}
-            />
-          </PostList>
-        ))}
+        {PostList(edges)}
       </ul>
     </Layout>
   )

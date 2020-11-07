@@ -2,6 +2,10 @@ import React from "react"
 import { Link } from "gatsby"
 import Img, { FluidObject } from "gatsby-image"
 import styled from "styled-components"
+import { kebabCase } from "../lib/utils"
+import { Provider, useDispatch } from "react-redux"
+import { BlogActions, store } from "../state/reducer"
+import { MarkdownRemarkEdge } from "../gen/graphql-types"
 
 const Card = styled.div`
   width: 100%;
@@ -22,7 +26,6 @@ const Card = styled.div`
       height: 100%;
     }
     .info {
-
       p:nth-last-child(1) {
         opacity: 1;
       }
@@ -80,16 +83,16 @@ interface IPostView {
   title: string
   date: string
   description: string
-  onClick?: ((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void)
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
 }
-export default function PostView({
+export function PostView({
   to,
   src,
   title,
   date,
   description,
-  onClick
-}: IPostView ) {
+  onClick,
+}: IPostView) {
   return (
     <Link to={to} style={{ textDecoration: "none" }} onClick={onClick}>
       <Card>
@@ -105,3 +108,20 @@ export default function PostView({
   )
 }
 
+export default function PostList(edges: MarkdownRemarkEdge[]) {
+  const dispatch = useDispatch()
+  return edges.map(({ node }: any) => (
+    <li style={{ listStyleType: "none", marginBottom: "30px" }} key={node.id}>
+      <PostView
+        to={`/${kebabCase(node.frontmatter.title)}`}
+        src={node.frontmatter.thumb.childImageSharp.fluid.src}
+        title={node.frontmatter.title}
+        date={node.frontmatter.date}
+        description={node.excerpt}
+        onClick={() => {
+          dispatch(BlogActions.toggleAnimation(true))
+        }}
+      />
+    </li>
+  ))
+}
