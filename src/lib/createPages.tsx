@@ -17,12 +17,6 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
             }
           }
         }
-      }
-    }
-  `)
-  const { data: tagData, errors: tagErrors } = await graphql<Query>(`
-    {
-      allMarkdownRemark {
         group(field: frontmatter___tags) {
           tag: fieldValue
           totalCount
@@ -30,11 +24,9 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
       }
     }
   `)
+
   if (errors) {
     throw errors
-  }
-  if (tagErrors) {
-    throw tagErrors
   }
 
   if (data) {
@@ -49,18 +41,17 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
         component: path.resolve(__dirname, "../templates/post.tsx"),
       })
     })
-  }
-
-  if (tagData) {
-    tagData.allMarkdownRemark.group.forEach((tags) => {
+    data.allMarkdownRemark.group.forEach(({tag,totalCount} : any) => {
       // 여기부터
+      console.log("create tags ",`/${tag}`)
       createPage({
-        path: tags.fieldValue,
+        path: "/" + tag,
         context: {
-          tag: tags.fieldValue,
+          tag,
         },
         component: path.resolve(__dirname, "../templates/tags.tsx"),
       })
     })
   }
+
 }

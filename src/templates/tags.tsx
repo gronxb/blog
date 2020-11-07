@@ -34,7 +34,8 @@ query($tag: String) {
   }
  */
 const Post: React.FC<ITagTemplateProps> = React.memo(props => {
-  const {edges} : MarkdownRemarkConnection = props.data as MarkdownRemarkConnection;
+  const {edges} : MarkdownRemarkConnection = (props.data as Query).allMarkdownRemark;
+  console.log(props.data,edges);
   return (
     <Layout small>
       <SEO title={props.pageContext.tag} description={props.pageContext.tag} />
