@@ -35,11 +35,7 @@ const Layout = ({
 
   return (
     <>
-     <Provider store={store}>
-      <Header
-        siteTitle="Develop & Moment, Future"
-        small={small}
-      />
+      <Header siteTitle="Develop & Moment, Future" small={small} />
       <div
         style={{
           display: "flex",
@@ -47,9 +43,9 @@ const Layout = ({
           justifyContent: "center",
         }}
       >
-       
-          <TagView group={data.allMarkdownRemark.group}></TagView>
-       
+        <Provider store={store}>
+          <TagView group={data.allMarkdownRemark.group} nodes={data.allMarkdownRemark.nodes}></TagView>
+        </Provider>
         <div
           style={{
             maxWidth: 960,
@@ -61,7 +57,6 @@ const Layout = ({
           </PageTransition>
         </div>
       </div>
-       </Provider>
     </>
   )
 }

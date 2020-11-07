@@ -14,10 +14,11 @@ function Header({
   const reduxAnimation: boolean = useSelector(
     ({ animation }: { animation: boolean }) => animation
   )
-  console.log(reduxAnimation)
+  
   useEffect(()=>{
     console.log("useEffect",reduxAnimation);
-  })
+  },[reduxAnimation]);
+
   const defaultStyle = {
     transition: reduxAnimation ? `height 350ms` : `none`,
     background: `dimgray`,
@@ -61,5 +62,17 @@ function Header({
     </PageTransition>
   )
 }
-
-export default Header
+function HeaderWrapper({
+  siteTitle,
+  small = false,
+} : {
+  siteTitle: React.ReactNode
+  small?: boolean
+}){
+  return (
+    <Provider store={store}>
+      <Header siteTitle={siteTitle} small={small}/>
+    </Provider>
+  )
+}
+export default HeaderWrapper
