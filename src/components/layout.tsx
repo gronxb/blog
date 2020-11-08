@@ -37,9 +37,11 @@ const Content = styled.div`
 const Layout = ({
   children,
   small = false,
+  rightbar
 }: {
   children: React.ReactNode
   small?: boolean
+  rightbar?: React.ReactNode
 }) => {
   const data = useStaticQuery<Query>(graphql`
     query {
@@ -68,7 +70,7 @@ const Layout = ({
             </PageTransition>
           </div>
           
-          <Navigation />
+          {rightbar}
         </Content>
         
       </Provider>

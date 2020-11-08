@@ -126,7 +126,6 @@ export default function PostList(edges: MarkdownRemarkEdge[]) {
           dispatch(BlogActions.toggleAnimation(true))
         }}
       />
-      {console.log(node.excerpt)}
     </li>
   ))
 }
