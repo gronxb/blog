@@ -6,7 +6,7 @@ import Comment from "../components/comment"
 import { renderAst } from "../lib/utils"
 import { kebabCase } from "../lib/utils"
 import Navigation from "../components/navigation"
-import {graphql} from "gatsby"
+import { graphql } from "gatsby"
 
 type IPostTemplateProps = ITemplateProps<{
   html: string
@@ -18,7 +18,8 @@ type IPostTemplateProps = ITemplateProps<{
 const Post: React.FC<IPostTemplateProps> = React.memo(props => {
   props.pageContext.htmlAst.children = props.pageContext.htmlAst.children.map(
     item => {
-      if (item.tagName === "h1") {
+      console.log(item.tagName)
+      if (item.tagName && item.tagName.includes("h")) {
         item.properties = {
           id: kebabCase(item.children[0].value),
         }
@@ -27,13 +28,21 @@ const Post: React.FC<IPostTemplateProps> = React.memo(props => {
     }
   )
 
+  const hList = props.pageContext.htmlAst.children
+    .filter(item => item.tagName && item.tagName.includes("h"))
+    .map(item => {
+      return {
+        value: item.children[0].value,
+        size: parseInt(item.tagName.slice(1))
+      }
+    })
   return (
-    <Layout small rightbar={<Navigation />}>
+    <Layout small rightbar={<Navigation list={hList} />}>
       <SEO
         title={props.pageContext.title}
         description={props.pageContext.html}
       />
-      
+
       <div>{renderAst(props.pageContext.htmlAst)}</div>
 
       <Comment
@@ -46,22 +55,3 @@ const Post: React.FC<IPostTemplateProps> = React.memo(props => {
 })
 
 export default Post
-
-// 밑에 쿼리부터 수정 20201108
-export const pageQuery = graphql`
-  query($id: StringQueryOperatorInput) { 
-    allMarkdownRemark(
-      filter: { id: $id }
-    ) {
-      totalCount
-      edges {
-        node {
-          htmlAst
-        
-          id
-        }
-      }
-    }
-  }
-`
-

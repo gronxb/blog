@@ -1,7 +1,10 @@
 import React from "react"
-import { Link,useStaticQuery,graphql } from "gatsby"
-import {Query} from "../gen/graphql-types"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import { Query } from "../gen/graphql-types"
 import styled from "styled-components"
+import { kebabCase } from "../lib/utils"
+
+import PageTransition from "gatsby-plugin-page-transitions"
 
 const NavigationWrapper = styled.div`
   position: fixed;
@@ -9,19 +12,21 @@ const NavigationWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `
-export default function Navigation() {
+export default function Navigation({
+  list,
+}: {
+  list: {
+    value: string
+    size: number
+  }[]
+}) {
   return (
-    <div style={{ position: "relative" }}>
+    <PageTransition defalutStyle={{ position: "relative" }}>
       <NavigationWrapper>
-        <Link to={"#hi!"}>Top</Link>
-        <Link to={"#test-2"}>Top</Link>
-        <Link to={"#test-3"}>Top</Link>
-        <Link to={"#test-4"}>Top</Link>
-        <Link to={"#test-5"}>Top</Link>
-        <Link to={"#test-6"}>Top</Link>
-        <Link to={"#test-7"}>Top</Link>
-        <Link to={"#test-8"}>Top</Link>
+        {list.map(v => (
+          <Link style={{whiteSpace: "pre"}} to={`#${kebabCase(v.value)}`}>{"\t".repeat(v.size)}{v.value}</Link>
+        ))}
       </NavigationWrapper>
-    </div>
+    </PageTransition>
   )
 }
