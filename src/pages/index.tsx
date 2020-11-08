@@ -32,11 +32,7 @@ const LatestPostListQuery = graphql`
 
 const IndexView = () => {
   const data = useStaticQuery<Query>(LatestPostListQuery)
-  return (
-    <ul>
-      {PostList(data.allMarkdownRemark.edges)}
-    </ul>
-  )
+  return <ul>{PostList(data.allMarkdownRemark.edges)}</ul>
 }
 const IndexPage = () => {
   return (

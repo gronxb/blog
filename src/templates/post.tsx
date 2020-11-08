@@ -4,7 +4,7 @@ import { ITemplateProps } from "../interface"
 import SEO from "../components/seo"
 import Comment from "../components/comment"
 import { renderAst } from "../lib/utils"
-import { MarkdownRemark, MarkdownRemarkEdge } from "../gen/graphql-types"
+import { kebabCase } from "../lib/utils"
 
 type IPostTemplateProps = ITemplateProps<{
   html: string
@@ -20,7 +20,7 @@ const Post: React.FC<IPostTemplateProps> = React.memo(props => {
     item => {
       if (item.tagName === "h1") {
         item.properties = {
-          name: item.children[0].value,
+          id: kebabCase(item.children[0].value),
         }
       }
       return item
@@ -33,6 +33,7 @@ const Post: React.FC<IPostTemplateProps> = React.memo(props => {
         title={props.pageContext.title}
         description={props.pageContext.html}
       />
+      
       <div>{renderAst(props.pageContext.htmlAst)}</div>
 
       <Comment

@@ -15,14 +15,14 @@ import "./layout.css"
 import { Provider } from "react-redux"
 import { store } from "../state/reducer"
 import styled from "styled-components"
-import Navigation from "./navigation"
+import Navigation from "../components/navigation"
 
 const Content = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   .main-wrapper {
-    max-width: 960px;
+    max-width: 760px;
     flex: 1;
     margin: 1.5rem;
   }
@@ -66,8 +66,10 @@ const Layout = ({
               <main>{children}</main>
             </PageTransition>
           </div>
+          
           <Navigation />
         </Content>
+        
       </Provider>
     </>
   )

@@ -8,7 +8,7 @@ import { MarkdownRemarkEdge } from "../gen/graphql-types"
 
 const Card = styled.div`
   width: 100%;
-  height: 300px;
+  height: 230px;
   border-radius: 5px;
   background: white;
   position: relative;
@@ -25,10 +25,11 @@ const Card = styled.div`
       height: 100%;
     }
     .info {
+      transition: 0.4s ease-out;
       p:nth-last-child(1) {
-        opacity: 1;
+        display: inline;
       }
-      transform: translateY(-7.5rem);
+      transform: translateY(-1rem);
     }
   }
 
@@ -48,7 +49,7 @@ const Card = styled.div`
     position: absolute;
     border-radius: 0 0 5px 5px;
     width: 100%;
-    height: 120px;
+    height: 80px;
     background: rgba(0, 0, 0, 0.3);
     transition: 0.5s;
   }
@@ -71,7 +72,7 @@ const Card = styled.div`
     }
 
     p:nth-last-child(1) {
-      opacity: 0;
+      display:none;
     }
   }
 `
