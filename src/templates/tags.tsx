@@ -42,6 +42,7 @@ export const pageQuery = graphql`
         node {
           excerpt(truncate: true, pruneLength: 200)
           frontmatter {
+            tags
             title
             date(formatString: "YYYY-MM-DD HH:mm:ss")
             thumb {

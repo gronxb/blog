@@ -11,8 +11,9 @@ const LatestPostListQuery = graphql`
     allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
       edges {
         node {
-          excerpt(truncate: true, pruneLength: 200)
+          excerpt(truncate: true, pruneLength: 150)
           frontmatter {
+            tags
             title
             date(formatString: "YYYY-MM-DD HH:mm:ss")
             thumb {

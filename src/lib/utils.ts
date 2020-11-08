@@ -8,6 +8,5 @@ export const kebabCase = (string: (string | undefined | null)) => {
 }
 
 export const renderAst = node => {
-    console.log(node)
   return hastToHyperscript(React.createElement, node);
 };

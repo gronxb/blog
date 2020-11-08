@@ -14,8 +14,6 @@ type IPostTemplateProps = ITemplateProps<{
 }>
 
 const Post: React.FC<IPostTemplateProps> = React.memo(props => {
-  console.log(props.pageContext)
-
   props.pageContext.htmlAst.children = props.pageContext.htmlAst.children.map(
     item => {
       if (item.tagName === "h1") {

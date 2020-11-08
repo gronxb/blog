@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import { MarkdownRemarkGroupConnection } from "../gen/graphql-types"
 import styled from "styled-components"
@@ -8,8 +8,9 @@ import { BlogActions } from "../state/reducer"
 
 const TagWrapper = styled.nav`
   padding: 1.5rem;
-  width: 250px;
-  margin-right: 50px;
+  padding-right: 0px;
+  padding-left: 0px;
+  width: 130px;
   &:before {
     content: "Tags";
   }
@@ -98,30 +99,41 @@ export default function TagView({
     {
       fieldValue: "All Post",
       totalCount: totalCount,
-      path: ""
+      path: "",
     },
     ...(group as IGroup[]),
-  ] // 기존 Tag에 All-Post 추가
-
+  ] // 기존 Tag에 All Post 추가
+  const [chooseAnimation, SetAnimation] = useState(false)
+  useEffect(() => {
+    SetAnimation( // 미리 계산
+      groupAll.some(({ fieldValue, path }) => {
+        if (
+          `/${kebabCase(path === "" ? "" : fieldValue)}` ===
+          decodeURI(location.pathname)
+        ) {
+          return true  // Tag에서 Tag 이동 시 애니메이션 False
+        }
+      })
+    )
+  }, [])
   return (
     <TagWrapper>
       <hr />
 
-      {groupAll.map(({ fieldValue, totalCount,path }) => (
-        <TagItem key={fieldValue} currPage={
-          `/${kebabCase(path === "" ? "" : fieldValue)}` === decodeURI(location.pathname) ? true : false
-        }>
+      {groupAll.map(({ fieldValue, totalCount, path }) => (
+        <TagItem
+          key={fieldValue}
+          currPage={
+            `/${kebabCase(path === "" ? "" : fieldValue)}` ===
+            decodeURI(location.pathname)
+              ? true
+              : false
+          }
+        >
           <Link
             onClick={() => {
-              // Post => Header(All Post) => Tag 이동 시 애니메이션 True issue 있음.
-              group.some(({ fieldValue }) => {
-                if (
-                  `/${kebabCase(path === "" ? "" : fieldValue)}` === decodeURI(location.pathname)
-                ) {
-                  dispatch(BlogActions.toggleAnimation(false)) // Tag에서 Tag 이동 시 애니메이션 False
-                  return true
-                }
-              })
+              if (chooseAnimation) dispatch(BlogActions.toggleAnimation(false))
+
             }}
             to={`/${kebabCase(path === "" ? "" : fieldValue)}`}
             style={{ textDecoration: "none" }}

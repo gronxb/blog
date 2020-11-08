@@ -27,7 +27,7 @@ const Card = styled.div`
     .info {
       transition: 0.4s ease-out;
       p:nth-last-child(1) {
-        display: inline;
+        visibility : visible;
       }
       transform: translateY(-1rem);
     }
@@ -38,7 +38,6 @@ const Card = styled.div`
     height: 100%;
     object-fit: cover;
     position: absolute;
-    filter: brightness(100%);
     top: 0;
     left: 0;
     border-radius: 5px;
@@ -49,7 +48,7 @@ const Card = styled.div`
     position: absolute;
     border-radius: 0 0 5px 5px;
     width: 100%;
-    height: 80px;
+    height: 120px;
     background: rgba(0, 0, 0, 0.3);
     transition: 0.5s;
   }
@@ -59,7 +58,8 @@ const Card = styled.div`
     z-index: 3;
     color: white;
     padding-left: 1.5rem;
-    transform: translateY(30px);
+    padding-right: 1.5rem;
+    transform: translateY(4.5rem);
     transition: 0.5s;
     h1 {
       margin: 0px;
@@ -68,11 +68,12 @@ const Card = styled.div`
     p {
       letter-spacing: 1px;
       font-size: 15px;
-      margin-top: 8px;
     }
 
     p:nth-last-child(1) {
-      display:none;
+      padding-top: 10px;
+      height:5rem;
+      visibility : hidden;
     }
   }
 `
@@ -82,6 +83,7 @@ interface IPostView {
   src: string
   title: string
   date: string
+  tags: string[]
   description: string
   onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
 }
@@ -90,6 +92,7 @@ export function PostView({
   src,
   title,
   date,
+  tags,
   description,
   onClick,
 }: IPostView) {
@@ -100,6 +103,7 @@ export function PostView({
         <div className="bg-bar" />
         <div className="info">
           <h1>{title}</h1>
+          <p>{tags.map(tag => `#${tag}`).join(" ")}</p>
           <p>{date}</p>
           <p>{description}</p>
         </div>
@@ -116,11 +120,13 @@ export default function PostList(edges: MarkdownRemarkEdge[]) {
         src={node.frontmatter.thumb.childImageSharp.fluid.src}
         title={node.frontmatter.title}
         date={node.frontmatter.date}
+        tags={node.frontmatter.tags}
         description={node.excerpt}
         onClick={() => {
           dispatch(BlogActions.toggleAnimation(true))
         }}
       />
+      {console.log(node.excerpt)}
     </li>
   ))
 }
