@@ -21,14 +21,14 @@ const Content = styled.div`
   flex-direction: row;
   justify-content: center;
   .main-wrapper {
-    maxwidth: 960px;
+    max-width: 960px;
     flex: 1;
     margin: 1.5rem;
   }
   @media (max-width: 768px) {
     flex-direction: column;
     .main-wrapper {
-      margin: 0 1.5rem 1.5rem 1.5rem;
+      margin: 0 1rem 1rem 1rem;
     }
   }
 `

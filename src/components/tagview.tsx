@@ -18,7 +18,7 @@ const TagWrapper = styled.nav`
       display: flex;
       overflow: scroll;
       width: 100%;
-      padding: 0.75rem;
+      padding: 0.5rem 1rem 0.5rem 0.7rem
     }
     &:before {
       content: none;
@@ -39,7 +39,7 @@ const TagItem = styled.li`
   @media (max-width: 768px) {
     & {
       display: flex;
-      margin-left: 10px;
+      margin: 5px;
       padding: 0.75rem;
       font-size: 0.75rem;
       line-height: 0.75rem;
@@ -93,7 +93,7 @@ export default function TagView({
         <TagItem key={fieldValue}>
           <Link
             onClick={() => {
-              // Post => Header => Tag 이동 시 애니메이션 True issue 있음.
+              // Post => Header(All Post) => Tag 이동 시 애니메이션 True issue 있음.
               group.some(({ fieldValue }) => {
                 if (
                   `/${kebabCase(fieldValue)}` === decodeURI(location.pathname)
@@ -110,7 +110,7 @@ export default function TagView({
           </Link>
         </TagItem>
       ))}
-       {group.map(({ fieldValue, totalCount }) => (
+        {group.map(({ fieldValue, totalCount }) => (
         <TagItem key={fieldValue}>
           <Link
             onClick={() => {
@@ -130,50 +130,7 @@ export default function TagView({
             {fieldValue} ({totalCount})
           </Link>
         </TagItem>
-      ))}
-       {group.map(({ fieldValue, totalCount }) => (
-        <TagItem key={fieldValue}>
-          <Link
-            onClick={() => {
-              // Post => Header => Tag 이동 시 애니메이션 True issue 있음.
-              group.some(({ fieldValue }) => {
-                if (
-                  `/${kebabCase(fieldValue)}` === decodeURI(location.pathname)
-                ) {
-                  dispatch(BlogActions.toggleAnimation(false)) // Tag에서 Tag 이동 시 애니메이션 False
-                  return true
-                }
-              })
-            }}
-            to={`/${kebabCase(fieldValue)}`}
-            style={{ textDecoration: "none" }}
-          >
-            {fieldValue} ({totalCount})
-          </Link>
-        </TagItem>
-      ))}
-       {group.map(({ fieldValue, totalCount }) => (
-        <TagItem key={fieldValue}>
-          <Link
-            onClick={() => {
-              // Post => Header => Tag 이동 시 애니메이션 True issue 있음.
-              group.some(({ fieldValue }) => {
-                if (
-                  `/${kebabCase(fieldValue)}` === decodeURI(location.pathname)
-                ) {
-                  dispatch(BlogActions.toggleAnimation(false)) // Tag에서 Tag 이동 시 애니메이션 False
-                  return true
-                }
-              })
-            }}
-            to={`/${kebabCase(fieldValue)}`}
-            style={{ textDecoration: "none" }}
-          >
-            {fieldValue} ({totalCount})
-          </Link>
-        </TagItem>
-      ))}
-       {group.map(({ fieldValue, totalCount }) => (
+      ))} {group.map(({ fieldValue, totalCount }) => (
         <TagItem key={fieldValue}>
           <Link
             onClick={() => {
