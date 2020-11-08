@@ -14,7 +14,47 @@ import TagView from "./tagview"
 import "./layout.css"
 import { Provider } from "react-redux"
 import { store } from "../state/reducer"
+import styled from "styled-components"
 
+const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  .main-wrapper {
+    maxwidth: 960px;
+    flex: 1;
+    margin: 1.5rem;
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    .main-wrapper {
+      margin: 1.5rem;
+      margin-top: 0px;
+    }
+    nav {
+      display: flex;
+      overflow: scroll;
+      width: 100%;
+      padding: 0.75rem;
+    }
+    nav:before {
+      content: none;
+    }
+    nav li {
+      display: flex;
+      margin-left: 10px;
+      margin-right: 10px;
+      padding: 0.75rem;
+      font-size: 0.75rem;
+      line-height: 0.75rem;
+      align-items: center;
+      flex-shrink: 0;
+      height: 1rem;
+      border-radius: 5px;
+      background: dimgray;
+    }
+  }
+`
 const Layout = ({
   children,
   small = false,
@@ -38,28 +78,17 @@ const Layout = ({
     <>
       <Provider store={store}>
         <Header siteTitle="Develop & Moment, Future" small={small} />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-          }}
-        >
+        <Content>
           <TagView
             group={data.allMarkdownRemark.group}
             totalCount={data.allMarkdownRemark.totalCount}
           ></TagView>
-          <div
-            style={{
-              maxWidth: 960,
-              flex: 1,
-            }}
-          >
+          <div className="main-wrapper">
             <PageTransition>
               <main>{children}</main>
             </PageTransition>
           </div>
-        </div>
+        </Content>
       </Provider>
     </>
   )

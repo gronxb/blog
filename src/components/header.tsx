@@ -22,7 +22,6 @@ function Header({
   const defaultStyle = {
     transition: reduxAnimation ? `height 350ms` : `none`,
     background: `dimgray`,
-    marginBottom: `1.45rem`,
     display: `flex`,
     justifyContent: `center`,
     alignItems: `center`,
@@ -63,17 +62,4 @@ function Header({
     </PageTransition>
   )
 }
-function HeaderWrapper({
-  siteTitle,
-  small = false,
-}: {
-  siteTitle: React.ReactNode
-  small?: boolean
-}) {
-  return (
-    <Provider store={store}>
-      <Header siteTitle={siteTitle} small={small} />
-    </Provider>
-  )
-}
-export default HeaderWrapper
+export default Header
