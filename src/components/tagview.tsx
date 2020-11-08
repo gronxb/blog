@@ -1,14 +1,9 @@
-import React, { useEffect, useRef } from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import {
-  MarkdownRemark,
-  MarkdownRemarkEdge,
-  MarkdownRemarkFrontmatter,
-  MarkdownRemarkGroupConnection,
-} from "../gen/graphql-types"
+import React from "react"
+import { Link } from "gatsby"
+import { MarkdownRemarkGroupConnection } from "../gen/graphql-types"
 import styled from "styled-components"
 import { kebabCase } from "../lib/utils"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { BlogActions } from "../state/reducer"
 
 const TagWrapper = styled.nav`
@@ -33,11 +28,9 @@ const TagItem = styled.li`
 export default function TagView({
   group,
   totalCount,
-  nodes,
 }: {
   group: MarkdownRemarkGroupConnection[]
   totalCount: number
-  nodes: MarkdownRemark[]
 }) {
   const dispatch = useDispatch()
 
@@ -67,15 +60,12 @@ export default function TagView({
         <TagItem key={fieldValue}>
           <Link
             onClick={() => {
+              // Post => Header => Tag 이동 시 애니메이션 True issue 있음.
               group.some(({ fieldValue }) => {
-                console.log(
-                  `/${kebabCase(fieldValue)}`,
-                  decodeURI(location.pathname)
-                )
                 if (
                   `/${kebabCase(fieldValue)}` === decodeURI(location.pathname)
                 ) {
-                  dispatch(BlogActions.toggleAnimation(false))
+                  dispatch(BlogActions.toggleAnimation(false)) // Tag에서 Tag 이동 시 애니메이션 False
                   return true
                 }
               })

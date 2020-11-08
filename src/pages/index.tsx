@@ -1,14 +1,10 @@
-import React,{useEffect} from "react"
-import { Link } from "gatsby"
+import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql, useStaticQuery } from "gatsby"
 import { Query } from "../gen/graphql-types"
-import PostList from "../components/PostView"
-import { kebabCase } from "../lib/utils"
-import { Provider, useDispatch } from "react-redux"
-import { BlogActions, store } from "../state/reducer"
+import PostList from "../components/PostList"
 
 const LatestPostListQuery = graphql`
   query LatestPostListQuery {

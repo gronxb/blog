@@ -47,7 +47,6 @@ const Layout = ({
         >
           <TagView
             group={data.allMarkdownRemark.group}
-            nodes={data.allMarkdownRemark.nodes}
             totalCount={data.allMarkdownRemark.totalCount}
           ></TagView>
           <div

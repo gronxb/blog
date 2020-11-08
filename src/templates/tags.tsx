@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import Layout from "../components/layout"
 import { ITemplateProps } from "../interface"
 import SEO from "../components/seo"
-import { graphql, useStaticQuery } from "gatsby"
-import { Query, MarkdownRemarkConnection } from "../gen/graphql-types"
-import PostView from "../components/PostView"
-import { kebabCase } from "../lib/utils"
-import { Provider, useDispatch } from "react-redux"
-import { BlogActions, store } from "../state/reducer"
-import PostList from "../components/PostView"
+import { graphql } from "gatsby"
+import {
+  Query,
+  MarkdownRemarkConnection,
+  MarkdownRemarkEdge,
+} from "../gen/graphql-types"
+import PostList from "../components/PostList"
 type ITagTemplateProps = ITemplateProps<{
   tag: string
 }>
-
+const TagsView = ({ edges }: { edges: MarkdownRemarkEdge[] }) => {
+  return <ul>{PostList(edges)}</ul>
+}
 const Tags: React.FC<ITagTemplateProps> = React.memo(props => {
   const {
     edges,
@@ -21,23 +23,12 @@ const Tags: React.FC<ITagTemplateProps> = React.memo(props => {
   return (
     <Layout>
       <SEO title={props.pageContext.tag} description={props.pageContext.tag} />
-
-      <ul>
-        {PostList(edges)}
-      </ul>
+      <TagsView edges={edges} />
     </Layout>
   )
 })
 
-const TagWrapper: React.FC<ITagTemplateProps> = React.memo(props => {
-  return (
-    <Provider store={store}>
-      <Tags {...props} />
-    </Provider>
-  )
-})
-
-export default TagWrapper
+export default Tags
 
 export const pageQuery = graphql`
   query($tag: String) {

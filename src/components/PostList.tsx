@@ -1,10 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
-import Img, { FluidObject } from "gatsby-image"
 import styled from "styled-components"
 import { kebabCase } from "../lib/utils"
-import { Provider, useDispatch } from "react-redux"
-import { BlogActions, store } from "../state/reducer"
+import { useDispatch } from "react-redux"
+import { BlogActions } from "../state/reducer"
 import { MarkdownRemarkEdge } from "../gen/graphql-types"
 
 const Card = styled.div`
@@ -107,7 +106,6 @@ export function PostView({
     </Link>
   )
 }
-
 export default function PostList(edges: MarkdownRemarkEdge[]) {
   const dispatch = useDispatch()
   return edges.map(({ node }: any) => (
