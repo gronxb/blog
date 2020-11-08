@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import { ITemplateProps } from "../interface"
 import SEO from "../components/seo"
 import Comment from "../components/comment"
+import {renderAst} from "../lib/utils"
 
 type IPostTemplateProps = ITemplateProps<{
   html: string
@@ -12,12 +13,16 @@ type IPostTemplateProps = ITemplateProps<{
 
 const Post: React.FC<IPostTemplateProps> = React.memo(props => {
   return (
+    
     <Layout small>
       <SEO
         title={props.pageContext.title}
         description={props.pageContext.html}
       />
-      <div dangerouslySetInnerHTML={{ __html: props.pageContext.html }}></div>
+      <div>
+        {renderAst(props.pageContext.htmlAst)}
+        
+      </div>
 
       <Comment
         repo="gron1gh1/blog"

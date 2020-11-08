@@ -15,6 +15,7 @@ import "./layout.css"
 import { Provider } from "react-redux"
 import { store } from "../state/reducer"
 import styled from "styled-components"
+import Navigation from "./navigation"
 
 const Content = styled.div`
   display: flex;
@@ -65,6 +66,7 @@ const Layout = ({
               <main>{children}</main>
             </PageTransition>
           </div>
+          <Navigation />
         </Content>
       </Provider>
     </>

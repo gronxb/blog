@@ -11,6 +11,7 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
         edges {
           node {
             html
+            htmlAst
             frontmatter {
               title
               date(formatString: "YYYY-MM-DD HH:mm:ss")

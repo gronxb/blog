@@ -16,7 +16,7 @@ const TagWrapper = styled.nav`
   @media (max-width: 768px) {
     & {
       display: flex;
-      overflow: scroll;
+      overflow-x: auto;
       width: 100%;
       padding: 0.5rem 1rem 0.5rem 0.7rem;
     }
@@ -96,7 +96,7 @@ export default function TagView({
 
   const groupAll: IGroup[] = [
     {
-      fieldValue: "All-Post",
+      fieldValue: "All Post",
       totalCount: totalCount,
       path: ""
     },
