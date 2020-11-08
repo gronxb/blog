@@ -36,6 +36,7 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
         path: kebabCase(node.frontmatter && node.frontmatter.title),
         context: {
           html: node.html,
+          htmlAst: node.htmlAst,
           title: node.frontmatter ? node.frontmatter.title : "",
           date: node.frontmatter ? node.frontmatter.date : "",
         },

@@ -6,7 +6,7 @@ export default function Navigation() {
 
   return (
     <div>
-        <Link to={"#top"}>Top</Link>
+        <Link to={"#Hi!"}>Top</Link>
     </div>
   )
 }

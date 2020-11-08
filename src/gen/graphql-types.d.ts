@@ -2490,6 +2490,7 @@ export type SitePageConnectionGroupArgs = {
 export type SitePageContext = {
   __typename?: 'SitePageContext';
   html?: Maybe<Scalars['String']>;
+  htmlAst?: Maybe<SitePageContextHtmlAst>;
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
   tag?: Maybe<Scalars['String']>;
@@ -2497,9 +2498,66 @@ export type SitePageContext = {
 
 export type SitePageContextFilterInput = {
   html?: Maybe<StringQueryOperatorInput>;
+  htmlAst?: Maybe<SitePageContextHtmlAstFilterInput>;
   title?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
   tag?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextHtmlAst = {
+  __typename?: 'SitePageContextHtmlAst';
+  type?: Maybe<Scalars['String']>;
+  children?: Maybe<Array<Maybe<SitePageContextHtmlAstChildren>>>;
+  data?: Maybe<SitePageContextHtmlAstData>;
+};
+
+export type SitePageContextHtmlAstChildren = {
+  __typename?: 'SitePageContextHtmlAstChildren';
+  type?: Maybe<Scalars['String']>;
+  tagName?: Maybe<Scalars['String']>;
+  children?: Maybe<Array<Maybe<SitePageContextHtmlAstChildrenChildren>>>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextHtmlAstChildrenChildren = {
+  __typename?: 'SitePageContextHtmlAstChildrenChildren';
+  type?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextHtmlAstChildrenChildrenFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextHtmlAstChildrenChildrenFilterListInput = {
+  elemMatch?: Maybe<SitePageContextHtmlAstChildrenChildrenFilterInput>;
+};
+
+export type SitePageContextHtmlAstChildrenFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  tagName?: Maybe<StringQueryOperatorInput>;
+  children?: Maybe<SitePageContextHtmlAstChildrenChildrenFilterListInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextHtmlAstChildrenFilterListInput = {
+  elemMatch?: Maybe<SitePageContextHtmlAstChildrenFilterInput>;
+};
+
+export type SitePageContextHtmlAstData = {
+  __typename?: 'SitePageContextHtmlAstData';
+  quirksMode?: Maybe<Scalars['Boolean']>;
+};
+
+export type SitePageContextHtmlAstDataFilterInput = {
+  quirksMode?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type SitePageContextHtmlAstFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  children?: Maybe<SitePageContextHtmlAstChildrenFilterListInput>;
+  data?: Maybe<SitePageContextHtmlAstDataFilterInput>;
 };
 
 export type SitePageEdge = {
@@ -2603,6 +2661,13 @@ export type SitePageFieldsEnum =
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
   | 'context___html'
+  | 'context___htmlAst___type'
+  | 'context___htmlAst___children'
+  | 'context___htmlAst___children___type'
+  | 'context___htmlAst___children___tagName'
+  | 'context___htmlAst___children___children'
+  | 'context___htmlAst___children___value'
+  | 'context___htmlAst___data___quirksMode'
   | 'context___title'
   | 'context___date'
   | 'context___tag'
