@@ -36,7 +36,16 @@ const TagItem = styled.li<{ currPage?: boolean }>`
   a:hover {
     text-decoration: underline !important;
   }
-
+  ${props =>
+    props.currPage &&
+    `
+  &{
+    a:link,
+    a:visited {
+      color: CornflowerBlue;
+    }
+  }
+  `}
   @media (max-width: 768px) {
     & {
       display: flex;
@@ -55,7 +64,7 @@ const TagItem = styled.li<{ currPage?: boolean }>`
       color: black;
     }
     a:hover {
-      text-decoration: none;
+      text-decoration: none !important;
     }
     ${props =>
       props.currPage &&
@@ -67,7 +76,7 @@ const TagItem = styled.li<{ currPage?: boolean }>`
       }
       background: CornflowerBlue;
     }
-    `};
+    `}
   }
 `
 interface IGroup {
