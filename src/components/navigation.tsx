@@ -11,7 +11,28 @@ const NavigationWrapper = styled.div`
   top: 200px;
   display: flex;
   flex-direction: column;
+  @media (max-width: 768px) {
+    & {
+      display: none;
+  }
 `
+const NavItem = styled(Link)`
+  white-space: pre;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s;
+
+  &:hover{
+    font-size: 15px;
+    font-weight: bold;
+  }
+  &:link, &:visited {
+    color: black;
+  }
+
+ 
+`;
+
 export default function Navigation({
   list,
 }: {
@@ -23,8 +44,9 @@ export default function Navigation({
   return (
     <PageTransition defalutStyle={{ position: "relative" }}>
       <NavigationWrapper>
+        <hr style={{width:'5px', height:'100%', position: 'absolute'}} />
         {list.map(v => (
-          <Link style={{whiteSpace: "pre"}} to={`#${kebabCase(v.value)}`}>{"\t".repeat(v.size)}{v.value}</Link>
+          <NavItem to={`#${kebabCase(v.value)}`}>{"\t".repeat(v.size)}{v.value}</NavItem>
         ))}
       </NavigationWrapper>
     </PageTransition>
