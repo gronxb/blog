@@ -3,7 +3,6 @@ import React, { useEffect } from "react"
 import PageTransition from "gatsby-plugin-page-transitions"
 import { Provider, useSelector } from "react-redux"
 import { store } from "../state/reducer"
-
 function Header({
   siteTitle,
   small = false,
@@ -16,31 +15,38 @@ function Header({
   )
 
   const defaultStyle = {
-    transition: reduxAnimation ? `height 350ms` : `none`,
-    background: `dimgray`,
+    transition: reduxAnimation ? `350ms` : `none`,
+    background: `url(/static/logo.png)`,
     display: `flex`,
     justifyContent: `center`,
     alignItems: `center`,
     height: small === false ? `100px` : `30vh`,
+    backgroundRepeat: `no-repeat`,
+    backgroundPosition: `center`,
+    backgroundColor: `rgb(34,49,63)`,
+    backgroundSize: `500px`
   }
   const transitionStyle = {
-    entering: { height: small === false ? "30vh" : "100px" },
-    entered: { height: small === false ? "30vh" : "100px" },
-    exiting: { height: small === false ? "100px" : "30vh" },
+    entering: { height: small === false ? "30vh" : "100px",
+    backgroundSize: small === false ? "500px" : " 200px"},
+    entered: { height: small === false ? "30vh" : "100px",
+    backgroundSize: small === false ? "500px" : " 200px" },
+    exiting: { height: small === false ? "100px" : "30vh" ,
+    backgroundSize: small === false ? "200px" : " 500px"},
   }
 
   return (
+    <Link
+    to="/"
+    style={{
+      textDecoration: `none`,
+    }}
+  >
     <PageTransition
       defaultStyle={defaultStyle}
       transitionStyles={transitionStyle}
     >
-      <Link
-        to="/"
-        style={{
-          color: `white`,
-          textDecoration: `none`,
-        }}
-      >
+     
         <header>
           <div
             style={{
@@ -48,10 +54,12 @@ function Header({
               maxWidth: 960,
               padding: `1.45rem 1.0875rem`,
             }}
-          ></div>
+          >
+          </div>
         </header>
-      </Link>
+     
     </PageTransition>
+    </Link>
   )
 }
 export default Header
