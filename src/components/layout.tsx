@@ -21,6 +21,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  magin-right: 200px;
   .main-wrapper {
     max-width: 760px;
     flex: 1;
