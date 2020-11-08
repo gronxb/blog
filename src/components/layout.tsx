@@ -28,30 +28,7 @@ const Content = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     .main-wrapper {
-      margin: 1.5rem;
-      margin-top: 0px;
-    }
-    nav {
-      display: flex;
-      overflow: scroll;
-      width: 100%;
-      padding: 0.75rem;
-    }
-    nav:before {
-      content: none;
-    }
-    nav li {
-      display: flex;
-      margin-left: 10px;
-      margin-right: 10px;
-      padding: 0.75rem;
-      font-size: 0.75rem;
-      line-height: 0.75rem;
-      align-items: center;
-      flex-shrink: 0;
-      height: 1rem;
-      border-radius: 5px;
-      background: dimgray;
+      margin: 0 1.5rem 1.5rem 1.5rem;
     }
   }
 `

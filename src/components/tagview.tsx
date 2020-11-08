@@ -13,18 +13,48 @@ const TagWrapper = styled.nav`
   &:before{
     content: "Tags"
   }
+  @media (max-width: 768px) {
+    & {
+      display: flex;
+      overflow: scroll;
+      width: 100%;
+      padding: 0.75rem;
+    }
+    &:before {
+      content: none;
+    }
+    
+  }
 `
 const TagItem = styled.li`
   font-size: 14px;
   list-style: none;
-  a:link {
+  a:link,a:visited {
     color: black;
   }
   a:hover {
     text-decoration: underline !important;
   }
-  a:visited {
-    color: black;
+  
+  @media (max-width: 768px) {
+    & {
+      display: flex;
+      margin-left: 10px;
+      padding: 0.75rem;
+      font-size: 0.75rem;
+      line-height: 0.75rem;
+      align-items: center;
+      flex-shrink: 0;
+      height: 1rem;
+      border-radius: 10px;
+      background: Gainsboro;
+    }
+    a:link,a:visited {
+      color: black;
+    }
+    a:hover {
+      text-decoration: none;
+    }
   }
 `
 
