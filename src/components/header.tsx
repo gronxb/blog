@@ -15,10 +15,6 @@ function Header({
     ({ animation }: { animation: boolean }) => animation
   )
 
-  useEffect(() => {
-    console.log("useEffect", reduxAnimation)
-  }, [reduxAnimation])
-
   const defaultStyle = {
     transition: reduxAnimation ? `height 350ms` : `none`,
     background: `dimgray`,
