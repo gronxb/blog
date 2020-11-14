@@ -102,13 +102,14 @@ export default function TagView({
   ] // 기존 Tag에 All Post 추가
   const [chooseAnimation, SetAnimation] = useState(false)
   useEffect(() => {
-    SetAnimation( // 미리 계산
+    SetAnimation(
+      // 미리 계산
       groupAll.some(({ fieldValue, path }) => {
         if (
           `/${kebabCase(path === "" ? "" : fieldValue)}` ===
           decodeURI(window.location.pathname)
         ) {
-          return true  // Tag에서 Tag 이동 시 애니메이션 False
+          return true // Tag에서 Tag 이동 시 애니메이션 False
         }
       })
     )
@@ -121,8 +122,9 @@ export default function TagView({
         <TagItem
           key={fieldValue}
           currPage={
+            typeof window !== "undefined" &&
             `/${kebabCase(path === "" ? "" : fieldValue)}` ===
-            decodeURI(window.location.pathname)
+              decodeURI(window.location.pathname)
               ? true
               : false
           }
@@ -130,7 +132,6 @@ export default function TagView({
           <Link
             onClick={() => {
               if (chooseAnimation) dispatch(BlogActions.toggleAnimation(false))
-
             }}
             to={`/${kebabCase(path === "" ? "" : fieldValue)}`}
             style={{ textDecoration: "none" }}
