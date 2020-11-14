@@ -42,7 +42,7 @@ function SEO({ description = "", lang = "ko", title = ""}: ISeo) {
 
   const metaDescription: string = description || site.siteMetadata.description
   const defaultTitle: string = site.siteMetadata?.title
-
+//<meta name="google-site-verification" content="ry3cTgj5FB3X_vJHtiBQAORfaFFlT6P5gvRojLOgl5I" />
   return (
     <Helmet
       htmlAttributes={{
@@ -51,7 +51,10 @@ function SEO({ description = "", lang = "ko", title = ""}: ISeo) {
       title={title}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
       meta={[
-
+        {
+          name: `google-site-verification`,
+          content: `ry3cTgj5FB3X_vJHtiBQAORfaFFlT6P5gvRojLOgl5I`,
+        },
         {
           name: `description`,
           content: metaDescription,
