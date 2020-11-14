@@ -6,7 +6,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { Query } from "../gen/graphql-types"
 import PostList from "../components/PostList"
 import styled from "styled-components"
-import { AiFillGithub, AiFillInstagram } from "react-icons/ai"
+import { AiFillGithub } from "react-icons/ai"
 import { HiOutlineMail } from "react-icons/hi"
 
 const LatestPostListQuery = graphql`
@@ -155,7 +155,7 @@ const IndexView = () => {
 const IndexPage = () => {
   return (
     <Layout>
-      <SEO title="Home" description="Home" />
+      <SEO title="Home" description="Develment IT Blog\n선규의 개발 블로그 !" />
       <Profile />
       <hr />
       <IndexView />

@@ -15,6 +15,18 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
             frontmatter {
               title
               date(formatString: "YYYY-MM-DD HH:mm:ss")
+              tags
+              thumb {
+                childImageSharp {
+                  fluid(maxWidth: 700, maxHeight: 400) {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    sizes
+                  }
+                }
+              }
             }
           }
         }
@@ -39,11 +51,13 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
           htmlAst: node.htmlAst,
           title: node.frontmatter ? node.frontmatter.title : "",
           date: node.frontmatter ? node.frontmatter.date : "",
+          tags: node.frontmatter ? node.frontmatter.tags : [""],
+          thumb: node.frontmatter ? node.frontmatter.thumb : "",
         },
         component: path.resolve(__dirname, "../templates/post.tsx"),
       })
     })
-    data.allMarkdownRemark.group.forEach(({ fieldValue, totalCount }) => {
+    data.allMarkdownRemark.group.forEach(({ fieldValue }) => {
       console.log("create tags ", `/${kebabCase(fieldValue)}`)
       createPage({
         path: kebabCase(fieldValue),

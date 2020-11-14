@@ -13,12 +13,13 @@ type IPostTemplateProps = ITemplateProps<{
   htmlAst: any
   title: string
   date: string
+  tags: string[]
+  thumb: any;
 }>
 
 const Post: React.FC<IPostTemplateProps> = React.memo(props => {
   props.pageContext.htmlAst.children = props.pageContext.htmlAst.children.map(
     item => {
-      console.log(item.tagName)
       if (item.tagName && item.tagName.includes("h")) {
         item.properties = {
           id: kebabCase(item.children[0].value),
@@ -42,9 +43,22 @@ const Post: React.FC<IPostTemplateProps> = React.memo(props => {
         title={props.pageContext.title}
         description={props.pageContext.html}
       />
-
-      <div>{renderAst(props.pageContext.htmlAst)}</div>
-
+      <div style={{marginTop:"1.5rem",marginBottom:"1.5rem"}}>
+      <h1>
+        {props.pageContext.title}
+      </h1>
+      <p style={{fontSize:"0.8rem",textAlign:"end"}}>
+        {props.pageContext.date}
+      </p>
+      <p style={{fontSize:"0.8rem",textAlign:"end"}}>
+          {props.pageContext.tags?.map(tag => `#${tag}`).join(" ")}
+      </p>
+      
+      <div>
+        <img src={props.pageContext.thumb.childImageSharp.fluid.src} style={{marginTop:"1.5rem"}} />
+        {renderAst(props.pageContext.htmlAst)}
+      </div>
+      </div>
       <Comment
         repo="gron1gh1/blog"
         title={props.pageContext.title}
