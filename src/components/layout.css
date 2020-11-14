@@ -76,10 +76,13 @@ template {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  transition: 0.3s;
 }
 a:active,
 a:hover {
   outline-width: 0;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 abbr[title] {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);

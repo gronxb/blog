@@ -34,9 +34,6 @@ const TagItem = styled.li<{ currPage?: boolean }>`
   a:visited {
     color: black;
   }
-  a:hover {
-    text-decoration: underline !important;
-  }
   ${props =>
     props.currPage &&
     `

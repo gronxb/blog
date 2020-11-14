@@ -133,12 +133,12 @@ const Profile = () => {
                 size={20}
                 style={{ marginRight: "5px" }}
               />
-              <a href="https://github.com/gron1gh1">github.com/gron1gh1</a>
+              <a target="_blank" href="https://github.com/gron1gh1">github.com/gron1gh1</a>
             </div>
             <div className="icon">
               <HiOutlineMail
                 size={20}
-                style={{ marginTop: "3px", marginRight: "5px" }}
+                style={{ marginTop: "2px", marginRight: "5px" }}
               />
               <a href="mailto:gron1gh1@gmail.com">gron1gh1@gmail.com</a>
             </div>
