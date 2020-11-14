@@ -1,30 +1,9 @@
-@font-face {
-  font-family: "NanumBarunGothic";
-  font-style: "normal";
-  font-weight: 400;
-  src: url(../../assets/fonts/NanumBarunGothic.ttf) format("truetype");
-}
-@font-face {
-  font-family: "NanumBarunGothic";
-  font-weight: 500;
-  src: url(../../assets/fonts/NanumBarunGothicBold.ttf) format("truetype");
-}
-@font-face {
-  font-family: "NanumBarunGothic";
-  font-weight: 300;
-  src: url(../../assets/fonts/NanumBarunGothicLight.ttf) format("truetype");
-}
-@font-face {
-  font-family: "NanumBarunGothic";
-  font-weight: 200;
-  src: url(../../assets/fonts/NanumBarunGothicUltraLight.ttf) format("truetype");
-}
 
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font-family: "NanumBarunGothic";
   font: 112.5%/1.45em georgia, serif, sans-serif;
+  font-family: "Nanum Gothic",sans-serif;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -33,7 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: "NanumBarunGothic";
+  font-family: "Nanum Gothic",sans-serif;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -110,7 +89,7 @@ h1 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'NanumBarunGothic';
+  font-family: "Nanum Gothic",sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
@@ -155,7 +134,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: 'NanumBarunGothic';
+  font-family: "Nanum Gothic",sans-serif;
   font-size: 14px !important;
 }
 figure {
@@ -288,7 +267,7 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'NanumBarunGothic';
+  font-family: "Nanum Gothic",sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
@@ -304,7 +283,7 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'NanumBarunGothic';
+  font-family: "Nanum Gothic",sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
@@ -320,7 +299,7 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'NanumBarunGothic';
+  font-family: "Nanum Gothic",sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
@@ -336,7 +315,7 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'NanumBarunGothic';
+  font-family: "Nanum Gothic",sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
@@ -352,7 +331,7 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'NanumBarunGothic';
+  font-family: "Nanum Gothic",sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;

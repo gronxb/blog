@@ -7,6 +7,18 @@ module.exports = {
 
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Nanum Gothic`,
+            variants: [`400`, `700`, `800`],
+            subsets: [`korean`],
+          },
+        ],
+      },
+    },
     'gatsby-plugin-sitemap',
     {
       resolve: `gatsby-transformer-remark`,
