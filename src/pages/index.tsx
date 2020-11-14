@@ -155,7 +155,7 @@ const IndexView = () => {
 const IndexPage = () => {
   return (
     <Layout>
-      <SEO title="Home" description="Develment IT Blog\n선규의 개발 블로그 !" />
+      <SEO title="Home" description="Develment IT Blog | 선규의 개발 블로그 !" />
       <Profile />
       <hr />
       <IndexView />
