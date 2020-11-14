@@ -7,6 +7,14 @@ module.exports = {
 
   },
   plugins: [
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          `gatsby-remark-prismjs`
+        ],
+      },
+    },
     `gatsby-plugin-page-transitions`,
     {
       resolve: `gatsby-plugin-generate-typings`,
@@ -21,7 +29,6 @@ module.exports = {
         path: `${__dirname}/posts`,
       },
     },
-    `gatsby-transformer-remark`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
     {
