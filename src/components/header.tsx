@@ -1,13 +1,11 @@
 import { Link } from "gatsby"
-import React, { useEffect } from "react"
+import React from "react"
 import PageTransition from "gatsby-plugin-page-transitions"
-import { Provider, useSelector } from "react-redux"
-import { store } from "../state/reducer"
+import { useSelector } from "react-redux"
+
 function Header({
-  siteTitle,
   small = false,
 }: {
-  siteTitle: React.ReactNode
   small?: boolean
 }) {
   const reduxAnimation: boolean = useSelector(

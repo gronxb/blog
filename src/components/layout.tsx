@@ -11,29 +11,9 @@ import { Query } from "../gen/graphql-types"
 import PageTransition from "gatsby-plugin-page-transitions"
 import Header from "./header"
 import TagView from "./tagview"
-import "./layout.css"
 import { Provider } from "react-redux"
 import { store } from "../state/reducer"
-import styled from "styled-components"
-import Navigation from "../components/navigation"
 
-const Content = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  magin-right: 200px;
-  .main-wrapper {
-    max-width: 760px;
-    flex: 1;
-    margin: 1.5rem;
-  }
-  @media (max-width: 768px) {
-    flex-direction: column;
-    .main-wrapper {
-      margin: 0 1rem 1rem 1rem;
-    }
-  }
-`
 const Layout = ({
   children,
   small = false,
@@ -58,8 +38,8 @@ const Layout = ({
   return (
     <>
       <Provider store={store}>
-        <Header siteTitle="Develop & Moment, Future" small={small} />
-        <Content>
+        <Header small={small} />
+        <div className="layout-content">
           <TagView
             group={data.allMarkdownRemark.group}
             totalCount={data.allMarkdownRemark.totalCount}
@@ -71,7 +51,7 @@ const Layout = ({
           </div>
           
           {rightbar}
-        </Content>
+        </div>
         
       </Provider>
     </>

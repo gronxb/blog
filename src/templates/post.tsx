@@ -6,7 +6,6 @@ import Comment from "../components/comment"
 import { renderAst } from "../lib/utils"
 import { kebabCase } from "../lib/utils"
 import Navigation from "../components/navigation"
-import { graphql } from "gatsby"
 
 type IPostTemplateProps = ITemplateProps<{
   html: string

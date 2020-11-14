@@ -7,6 +7,7 @@ module.exports = {
 
   },
   plugins: [
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
