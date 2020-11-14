@@ -106,7 +106,7 @@ export default function TagView({
       groupAll.some(({ fieldValue, path }) => {
         if (
           `/${kebabCase(path === "" ? "" : fieldValue)}` ===
-          decodeURI(location.pathname)
+          decodeURI(window.location.pathname)
         ) {
           return true  // Tag에서 Tag 이동 시 애니메이션 False
         }
@@ -122,7 +122,7 @@ export default function TagView({
           key={fieldValue}
           currPage={
             `/${kebabCase(path === "" ? "" : fieldValue)}` ===
-            decodeURI(location.pathname)
+            decodeURI(window.location.pathname)
               ? true
               : false
           }
