@@ -65,6 +65,10 @@ function SEO({ description = "", lang = "ko", title = ""}: ISeo) {
           content: metaDescription,
         },
         {
+          property: `og:image`,
+          content: `https://develment.blog/static/logo.png`,
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
