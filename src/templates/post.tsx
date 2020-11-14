@@ -52,7 +52,7 @@ const Post: React.FC<IPostTemplateProps> = React.memo(props => {
           {props.pageContext.tags?.map(tag => `#${tag}`).join(" ")}
         </p>
 
-        <div  className="content">
+        <div className="post-content">
           <img
             src={props.pageContext.thumb.childImageSharp.fluid.src}
             style={{ marginTop: "1.5rem" }}
