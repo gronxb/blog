@@ -7,7 +7,8 @@ module.exports = {
 
   },
   plugins: [
-
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-netlify',
     {
       resolve: `gatsby-transformer-remark`,
       options: {
