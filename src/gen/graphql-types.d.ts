@@ -2537,7 +2537,6 @@ export type SitePageContextHtmlAstChildrenChildrenChildren = {
   type?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
   tagName?: Maybe<Scalars['String']>;
-  properties?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenProperties>;
   children?: Maybe<Array<Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildren>>>;
 };
 
@@ -2546,7 +2545,6 @@ export type SitePageContextHtmlAstChildrenChildrenChildrenChildren = {
   type?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
   tagName?: Maybe<Scalars['String']>;
-  properties?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenProperties>;
   children?: Maybe<Array<Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildren>>>;
 };
 
@@ -2569,7 +2567,6 @@ export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenFilterInput = 
   type?: Maybe<StringQueryOperatorInput>;
   value?: Maybe<StringQueryOperatorInput>;
   tagName?: Maybe<StringQueryOperatorInput>;
-  properties?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenPropertiesFilterInput>;
   children?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenFilterListInput>;
 };
 
@@ -2577,56 +2574,15 @@ export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenFilterListInpu
   elemMatch?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenFilterInput>;
 };
 
-export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenProperties = {
-  __typename?: 'SitePageContextHtmlAstChildrenChildrenChildrenChildrenProperties';
-  className?: Maybe<Array<Maybe<Scalars['String']>>>;
-  style?: Maybe<Scalars['String']>;
-  alt?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  src?: Maybe<Scalars['String']>;
-  srcSet?: Maybe<Array<Maybe<Scalars['String']>>>;
-  sizes?: Maybe<Array<Maybe<Scalars['String']>>>;
-  loading?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenPropertiesFilterInput = {
-  className?: Maybe<StringQueryOperatorInput>;
-  style?: Maybe<StringQueryOperatorInput>;
-  alt?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  srcSet?: Maybe<StringQueryOperatorInput>;
-  sizes?: Maybe<StringQueryOperatorInput>;
-  loading?: Maybe<StringQueryOperatorInput>;
-};
-
 export type SitePageContextHtmlAstChildrenChildrenChildrenFilterInput = {
   type?: Maybe<StringQueryOperatorInput>;
   value?: Maybe<StringQueryOperatorInput>;
   tagName?: Maybe<StringQueryOperatorInput>;
-  properties?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenPropertiesFilterInput>;
   children?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenFilterListInput>;
 };
 
 export type SitePageContextHtmlAstChildrenChildrenChildrenFilterListInput = {
   elemMatch?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenFilterInput>;
-};
-
-export type SitePageContextHtmlAstChildrenChildrenChildrenProperties = {
-  __typename?: 'SitePageContextHtmlAstChildrenChildrenChildrenProperties';
-  className?: Maybe<Array<Maybe<Scalars['String']>>>;
-  href?: Maybe<Scalars['String']>;
-  style?: Maybe<Scalars['String']>;
-  target?: Maybe<Scalars['String']>;
-  rel?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type SitePageContextHtmlAstChildrenChildrenChildrenPropertiesFilterInput = {
-  className?: Maybe<StringQueryOperatorInput>;
-  href?: Maybe<StringQueryOperatorInput>;
-  style?: Maybe<StringQueryOperatorInput>;
-  target?: Maybe<StringQueryOperatorInput>;
-  rel?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageContextHtmlAstChildrenChildrenFilterInput = {
@@ -2644,14 +2600,10 @@ export type SitePageContextHtmlAstChildrenChildrenFilterListInput = {
 export type SitePageContextHtmlAstChildrenChildrenProperties = {
   __typename?: 'SitePageContextHtmlAstChildrenChildrenProperties';
   href?: Maybe<Scalars['String']>;
-  className?: Maybe<Array<Maybe<Scalars['String']>>>;
-  style?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextHtmlAstChildrenChildrenPropertiesFilterInput = {
   href?: Maybe<StringQueryOperatorInput>;
-  className?: Maybe<StringQueryOperatorInput>;
-  style?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageContextHtmlAstChildrenFilterInput = {
@@ -2876,6 +2828,19 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___plugins___nodeAPIs'
   | 'pluginCreator___pluginOptions___plugins___browserAPIs'
   | 'pluginCreator___pluginOptions___plugins___pluginFilepath'
+  | 'pluginCreator___pluginOptions___indentedSyntax'
+  | 'pluginCreator___pluginOptions___indentType'
+  | 'pluginCreator___pluginOptions___indentWidth'
+  | 'pluginCreator___pluginOptions___linefeed'
+  | 'pluginCreator___pluginOptions___omitSourceMapUrl'
+  | 'pluginCreator___pluginOptions___precision'
+  | 'pluginCreator___pluginOptions___sourceComments'
+  | 'pluginCreator___pluginOptions___sourceMapContents'
+  | 'pluginCreator___pluginOptions___sourceMapEmbed'
+  | 'pluginCreator___pluginOptions___fonts'
+  | 'pluginCreator___pluginOptions___fonts___family'
+  | 'pluginCreator___pluginOptions___fonts___variants'
+  | 'pluginCreator___pluginOptions___fonts___subsets'
   | 'pluginCreator___pluginOptions___output'
   | 'pluginCreator___pluginOptions___createLinkInHead'
   | 'pluginCreator___pluginOptions___maxWidth'
@@ -3123,6 +3088,19 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___plugins___nodeAPIs'
   | 'pluginOptions___plugins___browserAPIs'
   | 'pluginOptions___plugins___pluginFilepath'
+  | 'pluginOptions___indentedSyntax'
+  | 'pluginOptions___indentType'
+  | 'pluginOptions___indentWidth'
+  | 'pluginOptions___linefeed'
+  | 'pluginOptions___omitSourceMapUrl'
+  | 'pluginOptions___precision'
+  | 'pluginOptions___sourceComments'
+  | 'pluginOptions___sourceMapContents'
+  | 'pluginOptions___sourceMapEmbed'
+  | 'pluginOptions___fonts'
+  | 'pluginOptions___fonts___family'
+  | 'pluginOptions___fonts___variants'
+  | 'pluginOptions___fonts___subsets'
   | 'pluginOptions___output'
   | 'pluginOptions___createLinkInHead'
   | 'pluginOptions___maxWidth'
@@ -3281,6 +3259,16 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPluginOptions = {
   __typename?: 'SitePluginPluginOptions';
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>;
+  indentedSyntax?: Maybe<Scalars['Boolean']>;
+  indentType?: Maybe<Scalars['String']>;
+  indentWidth?: Maybe<Scalars['Int']>;
+  linefeed?: Maybe<Scalars['String']>;
+  omitSourceMapUrl?: Maybe<Scalars['Boolean']>;
+  precision?: Maybe<Scalars['Int']>;
+  sourceComments?: Maybe<Scalars['Boolean']>;
+  sourceMapContents?: Maybe<Scalars['Boolean']>;
+  sourceMapEmbed?: Maybe<Scalars['Boolean']>;
+  fonts?: Maybe<Array<Maybe<SitePluginPluginOptionsFonts>>>;
   output?: Maybe<Scalars['String']>;
   createLinkInHead?: Maybe<Scalars['Boolean']>;
   maxWidth?: Maybe<Scalars['Int']>;
@@ -3321,6 +3309,16 @@ export type SitePluginPluginOptions = {
 
 export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>;
+  indentedSyntax?: Maybe<BooleanQueryOperatorInput>;
+  indentType?: Maybe<StringQueryOperatorInput>;
+  indentWidth?: Maybe<IntQueryOperatorInput>;
+  linefeed?: Maybe<StringQueryOperatorInput>;
+  omitSourceMapUrl?: Maybe<BooleanQueryOperatorInput>;
+  precision?: Maybe<IntQueryOperatorInput>;
+  sourceComments?: Maybe<BooleanQueryOperatorInput>;
+  sourceMapContents?: Maybe<BooleanQueryOperatorInput>;
+  sourceMapEmbed?: Maybe<BooleanQueryOperatorInput>;
+  fonts?: Maybe<SitePluginPluginOptionsFontsFilterListInput>;
   output?: Maybe<StringQueryOperatorInput>;
   createLinkInHead?: Maybe<BooleanQueryOperatorInput>;
   maxWidth?: Maybe<IntQueryOperatorInput>;
@@ -3357,6 +3355,23 @@ export type SitePluginPluginOptionsFilterInput = {
   theme_color_in_head?: Maybe<BooleanQueryOperatorInput>;
   cacheDigest?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsFonts = {
+  __typename?: 'SitePluginPluginOptionsFonts';
+  family?: Maybe<Scalars['String']>;
+  variants?: Maybe<Array<Maybe<Scalars['String']>>>;
+  subsets?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type SitePluginPluginOptionsFontsFilterInput = {
+  family?: Maybe<StringQueryOperatorInput>;
+  variants?: Maybe<StringQueryOperatorInput>;
+  subsets?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsFontsFilterListInput = {
+  elemMatch?: Maybe<SitePluginPluginOptionsFontsFilterInput>;
 };
 
 export type SitePluginPluginOptionsPlugins = {
