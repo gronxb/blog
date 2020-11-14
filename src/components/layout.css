@@ -42,6 +42,9 @@ body {
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
 }
+.content p{
+  margin-bottom: 1.5rem;
+}
 article,
 aside,
 details,

@@ -2526,10 +2526,10 @@ export type SitePageContextHtmlAstChildren = {
 export type SitePageContextHtmlAstChildrenChildren = {
   __typename?: 'SitePageContextHtmlAstChildrenChildren';
   type?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
   tagName?: Maybe<Scalars['String']>;
   properties?: Maybe<SitePageContextHtmlAstChildrenChildrenProperties>;
   children?: Maybe<Array<Maybe<SitePageContextHtmlAstChildrenChildrenChildren>>>;
-  value?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextHtmlAstChildrenChildrenChildren = {
@@ -2568,10 +2568,10 @@ export type SitePageContextHtmlAstChildrenChildrenChildrenFilterListInput = {
 
 export type SitePageContextHtmlAstChildrenChildrenFilterInput = {
   type?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
   tagName?: Maybe<StringQueryOperatorInput>;
   properties?: Maybe<SitePageContextHtmlAstChildrenChildrenPropertiesFilterInput>;
   children?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenFilterListInput>;
-  value?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageContextHtmlAstChildrenChildrenFilterListInput = {
@@ -2580,22 +2580,10 @@ export type SitePageContextHtmlAstChildrenChildrenFilterListInput = {
 
 export type SitePageContextHtmlAstChildrenChildrenProperties = {
   __typename?: 'SitePageContextHtmlAstChildrenChildrenProperties';
-  width?: Maybe<Scalars['String']>;
-  height?: Maybe<Scalars['Int']>;
-  src?: Maybe<Scalars['String']>;
-  frameBorder?: Maybe<Scalars['String']>;
-  allow?: Maybe<Scalars['String']>;
-  allowFullScreen?: Maybe<Scalars['Boolean']>;
   href?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextHtmlAstChildrenChildrenPropertiesFilterInput = {
-  width?: Maybe<StringQueryOperatorInput>;
-  height?: Maybe<IntQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  frameBorder?: Maybe<StringQueryOperatorInput>;
-  allow?: Maybe<StringQueryOperatorInput>;
-  allowFullScreen?: Maybe<BooleanQueryOperatorInput>;
   href?: Maybe<StringQueryOperatorInput>;
 };
 

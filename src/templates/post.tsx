@@ -14,7 +14,7 @@ type IPostTemplateProps = ITemplateProps<{
   title: string
   date: string
   tags: string[]
-  thumb: any;
+  thumb: any
 }>
 
 const Post: React.FC<IPostTemplateProps> = React.memo(props => {
@@ -34,7 +34,7 @@ const Post: React.FC<IPostTemplateProps> = React.memo(props => {
     .map(item => {
       return {
         value: item.children[0].value,
-        size: parseInt(item.tagName.slice(1))
+        size: parseInt(item.tagName.slice(1)),
       }
     })
   return (
@@ -43,21 +43,22 @@ const Post: React.FC<IPostTemplateProps> = React.memo(props => {
         title={props.pageContext.title}
         description={props.pageContext.html}
       />
-      <div style={{marginTop:"1.5rem",marginBottom:"1.5rem"}}>
-      <h1>
-        {props.pageContext.title}
-      </h1>
-      <p style={{fontSize:"0.8rem",textAlign:"end"}}>
-        {props.pageContext.date}
-      </p>
-      <p style={{fontSize:"0.8rem",textAlign:"end"}}>
+      <div style={{ marginTop: "1.5rem", marginBottom: "1.5rem" }}>
+        <h1>{props.pageContext.title}</h1>
+        <p style={{ fontSize: "0.8rem", textAlign: "end" }}>
+          {props.pageContext.date}
+        </p>
+        <p style={{ fontSize: "0.8rem", textAlign: "end" }}>
           {props.pageContext.tags?.map(tag => `#${tag}`).join(" ")}
-      </p>
-      
-      <div>
-        <img src={props.pageContext.thumb.childImageSharp.fluid.src} style={{marginTop:"1.5rem"}} />
-        {renderAst(props.pageContext.htmlAst)}
-      </div>
+        </p>
+
+        <div  className="content">
+          <img
+            src={props.pageContext.thumb.childImageSharp.fluid.src}
+            style={{ marginTop: "1.5rem" }}
+          />
+          {renderAst(props.pageContext.htmlAst)}
+        </div>
       </div>
       <Comment
         repo="gron1gh1/blog"
