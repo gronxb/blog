@@ -2523,10 +2523,10 @@ export type SitePageContextHtmlAstChildren = {
 export type SitePageContextHtmlAstChildrenChildren = {
   __typename?: 'SitePageContextHtmlAstChildrenChildren';
   type?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
   tagName?: Maybe<Scalars['String']>;
   properties?: Maybe<SitePageContextHtmlAstChildrenChildrenProperties>;
   children?: Maybe<Array<Maybe<SitePageContextHtmlAstChildrenChildrenChildren>>>;
+  value?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextHtmlAstChildrenChildrenChildren = {
@@ -2680,10 +2680,10 @@ export type SitePageContextHtmlAstChildrenChildrenChildrenPropertiesFilterInput 
 
 export type SitePageContextHtmlAstChildrenChildrenFilterInput = {
   type?: Maybe<StringQueryOperatorInput>;
-  value?: Maybe<StringQueryOperatorInput>;
   tagName?: Maybe<StringQueryOperatorInput>;
   properties?: Maybe<SitePageContextHtmlAstChildrenChildrenPropertiesFilterInput>;
   children?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenFilterListInput>;
+  value?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageContextHtmlAstChildrenChildrenFilterListInput = {
