@@ -383,5 +383,6 @@ func main() {
 VideoCapture로 영상 프레임을 읽은 뒤 YOLOv4 모델을 처리한 전체 소스입니다.
 
 현재 테스트 환경엔 GPU가 없어서 많이 느리지만 정상 작동 하는 것을 알 수 있습니다.
+사용하실 때 GPU를 사용한다면 보다 빠른 속도를 기대할 수 있습니다.
 
 [gron1gh1/gocv-yolov4](https://github.com/gron1gh1/gocv-yolov4)
