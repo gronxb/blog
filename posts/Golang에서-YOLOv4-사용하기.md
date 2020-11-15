@@ -1,5 +1,5 @@
 ---
-date: 2020년 11월 15일 오후 7:04
+date: 2020-11-15 20:01:30
 tags: ["Golang","OpenCV"]
 thumb: "./images/Golang에서-YOLOv4-사용하기.png"
 title: Golang에서 YOLOv4 사용하기
