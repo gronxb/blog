@@ -2537,6 +2537,7 @@ export type SitePageContextHtmlAstChildrenChildrenChildren = {
   type?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
   tagName?: Maybe<Scalars['String']>;
+  properties?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenProperties>;
   children?: Maybe<Array<Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildren>>>;
 };
 
@@ -2545,6 +2546,7 @@ export type SitePageContextHtmlAstChildrenChildrenChildrenChildren = {
   type?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
   tagName?: Maybe<Scalars['String']>;
+  properties?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenProperties>;
   children?: Maybe<Array<Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildren>>>;
 };
 
@@ -2552,21 +2554,54 @@ export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildren = {
   __typename?: 'SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildren';
   type?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
+  tagName?: Maybe<Scalars['String']>;
+  properties?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenProperties>;
+  children?: Maybe<Array<Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenChildren>>>;
+};
+
+export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenChildren = {
+  __typename?: 'SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenChildren';
+  type?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput = {
+  elemMatch?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenFilterInput>;
 };
 
 export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenFilterInput = {
   type?: Maybe<StringQueryOperatorInput>;
   value?: Maybe<StringQueryOperatorInput>;
+  tagName?: Maybe<StringQueryOperatorInput>;
+  properties?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput>;
+  children?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenChildrenFilterListInput>;
 };
 
 export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenFilterListInput = {
   elemMatch?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenFilterInput>;
 };
 
+export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenProperties = {
+  __typename?: 'SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenProperties';
+  src?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenPropertiesFilterInput = {
+  src?: Maybe<StringQueryOperatorInput>;
+  alt?: Maybe<StringQueryOperatorInput>;
+};
+
 export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenFilterInput = {
   type?: Maybe<StringQueryOperatorInput>;
   value?: Maybe<StringQueryOperatorInput>;
   tagName?: Maybe<StringQueryOperatorInput>;
+  properties?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenPropertiesFilterInput>;
   children?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenChildrenFilterListInput>;
 };
 
@@ -2574,15 +2609,54 @@ export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenFilterListInpu
   elemMatch?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenFilterInput>;
 };
 
+export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenProperties = {
+  __typename?: 'SitePageContextHtmlAstChildrenChildrenChildrenChildrenProperties';
+  className?: Maybe<Array<Maybe<Scalars['String']>>>;
+  style?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  src?: Maybe<Scalars['String']>;
+  srcSet?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sizes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  loading?: Maybe<Scalars['String']>;
+  align?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextHtmlAstChildrenChildrenChildrenChildrenPropertiesFilterInput = {
+  className?: Maybe<StringQueryOperatorInput>;
+  style?: Maybe<StringQueryOperatorInput>;
+  alt?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  src?: Maybe<StringQueryOperatorInput>;
+  srcSet?: Maybe<StringQueryOperatorInput>;
+  sizes?: Maybe<StringQueryOperatorInput>;
+  loading?: Maybe<StringQueryOperatorInput>;
+  align?: Maybe<StringQueryOperatorInput>;
+};
+
 export type SitePageContextHtmlAstChildrenChildrenChildrenFilterInput = {
   type?: Maybe<StringQueryOperatorInput>;
   value?: Maybe<StringQueryOperatorInput>;
   tagName?: Maybe<StringQueryOperatorInput>;
+  properties?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenPropertiesFilterInput>;
   children?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenChildrenFilterListInput>;
 };
 
 export type SitePageContextHtmlAstChildrenChildrenChildrenFilterListInput = {
   elemMatch?: Maybe<SitePageContextHtmlAstChildrenChildrenChildrenFilterInput>;
+};
+
+export type SitePageContextHtmlAstChildrenChildrenChildrenProperties = {
+  __typename?: 'SitePageContextHtmlAstChildrenChildrenChildrenProperties';
+  className?: Maybe<Array<Maybe<Scalars['String']>>>;
+  style?: Maybe<Scalars['String']>;
+  href?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextHtmlAstChildrenChildrenChildrenPropertiesFilterInput = {
+  className?: Maybe<StringQueryOperatorInput>;
+  style?: Maybe<StringQueryOperatorInput>;
+  href?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageContextHtmlAstChildrenChildrenFilterInput = {
@@ -2600,10 +2674,24 @@ export type SitePageContextHtmlAstChildrenChildrenFilterListInput = {
 export type SitePageContextHtmlAstChildrenChildrenProperties = {
   __typename?: 'SitePageContextHtmlAstChildrenChildrenProperties';
   href?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['String']>;
+  height?: Maybe<Scalars['Int']>;
+  src?: Maybe<Scalars['String']>;
+  frameBorder?: Maybe<Scalars['String']>;
+  allow?: Maybe<Scalars['String']>;
+  allowFullScreen?: Maybe<Scalars['Boolean']>;
+  alt?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextHtmlAstChildrenChildrenPropertiesFilterInput = {
   href?: Maybe<StringQueryOperatorInput>;
+  width?: Maybe<StringQueryOperatorInput>;
+  height?: Maybe<IntQueryOperatorInput>;
+  src?: Maybe<StringQueryOperatorInput>;
+  frameBorder?: Maybe<StringQueryOperatorInput>;
+  allow?: Maybe<StringQueryOperatorInput>;
+  allowFullScreen?: Maybe<BooleanQueryOperatorInput>;
+  alt?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageContextHtmlAstChildrenFilterInput = {

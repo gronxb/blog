@@ -27,12 +27,13 @@ export function PostView({
     <Link to={to} style={{ textDecoration: "none" }} onClick={onClick}>
       <div className="post-card">
         <img src={src} />
-        <div className="bg-bar" />
-        <div className="info">
-          <h1>{title}</h1>
-          <p>{tags.map(tag => `#${tag}`).join(" ")}</p>
-          <p>{date}</p>
-          <p>{description}</p>
+        <div className="bg-bar">
+          <div className="info">
+            <h1>{title}</h1>
+            <p>{tags.map(tag => `#${tag}`).join(" ")}</p>
+            <p>{date}</p>
+            <p>{description}</p>
+          </div>
         </div>
       </div>
     </Link>
