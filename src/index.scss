@@ -22,6 +22,12 @@ body {
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
 }
+.post-content {
+  @media (max-width: 768px) {
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+  }
+}
 .post-content p {
   margin-bottom: 1.5rem;
 }
