@@ -687,6 +687,7 @@ pre tt:after {
     height: 140px;
     background: rgba(0, 0, 0, 0.3);
     transition: 0.5s;
+    overflow: hidden;
   }
 
   .info {
