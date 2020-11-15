@@ -14,7 +14,7 @@ title: Golang에서 YOLOv4 사용하기
 
 Go언어에서 YOLOv4 모델을 사용하기 위해 OpenCV DNN 모듈을 사용하겠습니다.
 
-Go언어로 바인딩 된 OpenCV 모듈인 **[GoCV](https://gocv.io)**를 설치하셔야합니다.
+Go언어로 바인딩 된 OpenCV 모듈인 [**GoCV**](https://gocv.io)를 설치하셔야합니다.
 
 테스트 환경은 우분투에서 진행하였습니다.
 
@@ -30,7 +30,7 @@ OpenCV를 컴파일하기 때문에 30분 가량의 시간이 소모될 수 있�
 
 ## ReadCOCO()
 
- 먼저 탐지될 클래스들이 모여있는 **[coco.names](https://github.com/pjreddie/darknet/blob/master/data/coco.names)**를 다운 받고 파일 입출력으로 읽겠습니다.
+ 먼저 탐지될 클래스들이 모여있는 [**coco.names**](https://github.com/pjreddie/darknet/blob/master/data/coco.names)를 다운 받고 파일 입출력으로 읽겠습니다.
 
 ```go
 func ReadCOCO() []string {
