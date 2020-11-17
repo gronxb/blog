@@ -23,13 +23,27 @@ body {
   font-feature-settings: "kern", "liga", "clig", "calt";
 }
 .post-content {
+  color: rgb(55, 53, 47);
   @media (max-width: 768px) {
     margin-left: 0.7rem;
     margin-right: 0.7rem;
   }
-}
-.post-content p {
-  margin-bottom: 1.5rem;
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  a {
+    background-color: transparent;
+    transition: 0.3s;
+    color: rgb(155, 155, 155);
+  }
+  a:active,
+  a:hover {
+    color: rgb(55, 53, 47);
+    text-decoration: underline;
+    font-weight: bold;
+  }
 }
 article,
 aside,
@@ -61,17 +75,6 @@ progress {
 [hidden],
 template {
   display: none;
-}
-a {
-  background-color: transparent;
-  -webkit-text-decoration-skip: objects;
-  transition: 0.3s;
-}
-a:active,
-a:hover {
-  outline-width: 0;
-  font-weight: bold;
-  font-size: 0.9rem;
 }
 abbr[title] {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
@@ -621,6 +624,18 @@ pre tt:after {
   top: 200px;
   display: flex;
   flex-direction: column;
+
+  a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    transition: 0.3s;
+  }
+  a:active,
+  a:hover {
+    outline-width: 0;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
   @media (max-width: 768px) {
     & {
       display: none;
@@ -634,11 +649,12 @@ pre tt:after {
   text-decoration: none;
   transition: 0.3s;
 
-  &:hover{
+  &:hover {
     font-size: 15px;
     font-weight: bold;
   }
-  &:link, &:visited {
+  &:link,
+  &:visited {
     color: black;
   }
 }
@@ -664,7 +680,7 @@ pre tt:after {
     .info {
       transition: 0.4s ease-out;
       p:nth-last-child(1) {
-        visibility : visible;
+        visibility: visible;
       }
     }
   }
@@ -709,8 +725,8 @@ pre tt:after {
 
     p:nth-last-child(1) {
       padding-top: 10px;
-      height:5rem;
-      visibility : hidden;
+      height: 5rem;
+      visibility: hidden;
     }
   }
 }
@@ -722,6 +738,18 @@ pre tt:after {
   width: 130px;
   &:before {
     content: "Tags";
+  }
+
+  a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    transition: 0.3s;
+  }
+  a:active,
+  a:hover {
+    outline-width: 0;
+    font-weight: bold;
+    font-size: 0.9rem;
   }
   @media (max-width: 768px) {
     & {
@@ -744,8 +772,8 @@ pre tt:after {
     color: black;
   }
 
-  &.currPage{
-    &{
+  &.currPage {
+    & {
       a:link,
       a:visited {
         color: CornflowerBlue;
@@ -773,8 +801,8 @@ pre tt:after {
     a:hover {
       text-decoration: none !important;
     }
-    &.currPage{
-      &{
+    &.currPage {
+      & {
         a:link,
         a:visited {
           color: white;
