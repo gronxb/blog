@@ -9,16 +9,13 @@ module.exports = {
   plugins: [
     `gatsby-plugin-sass`,
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Nanum Gothic`,
-            variants: [`400`, `700`, `800`],
-            subsets: [`korean`],
-          },
+          `Nanum Gothic\:400,700,800i`
         ],
-      },
+        display: 'swap'
+      }
     },
     'gatsby-plugin-sitemap',
     {
