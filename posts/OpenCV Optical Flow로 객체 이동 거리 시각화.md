@@ -1,7 +1,7 @@
 ---
 date: 2020-11-19 22:05:40
 tags: ["Python","OpenCV"]
-thumb: "./images/OpenCV-Optical-Flow로-객체-이동-거리-시각화.gif"
+thumb: "./images/OpenCV-Optical-Flow로-객체-이동-거리-시각화.png"
 title: OpenCV Optical Flow로 객체 이동 거리 시각화
 ---
 # 소개
@@ -207,7 +207,7 @@ while(1):
 **[전체 소스 (Github)](https://github.com/gron1gh1/opencv-motion-track-liner.git)**
 
 # 결과
-![Preview](./images/OpenCV-Optical-Flow로-객체-이동-거리-시각화.gif)
+![OpenCV-Optical-Flow로-객체-이동-거리-시각화](https://user-images.githubusercontent.com/41789633/99670783-69a78c00-2ab4-11eb-9f0d-8c4253de5213.gif)
 
 # 더 나아가
 
