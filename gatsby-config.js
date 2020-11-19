@@ -8,15 +8,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-sass`,
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `Nanum Gothic\:400,700,800i`
-        ],
-        display: 'swap'
-      }
-    },
     'gatsby-plugin-sitemap',
     {
       resolve: `gatsby-transformer-remark`,
