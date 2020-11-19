@@ -8,7 +8,7 @@ title: OpenCV Optical Flow로 객체 추적 시각화
 
  [Optical Flow(광학 흐름)](https://en.wikipedia.org/wiki/Optical_flow)이란 연속되는 두개의 프레임에서 물체, 표면 및 가장자리의 명백한 움직임의 패턴입니다. 
 
- 위 영상을 보면 사람이 움직이는 걸 계속 추적하여 라인을 그리는 것을 볼 수 있습니다.
+ 위 사진을 보면 사람이 움직이는 걸 계속 추적하여 라인을 그린 결과입니다.
 
  공식 OpenCV Optical Flow 예제를 변형하여 정해진 객체의 움직임을 추정해보겠습니다.
 
