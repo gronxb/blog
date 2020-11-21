@@ -7,8 +7,14 @@ module.exports = {
 
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+         trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID || "none",
+      }
+    },
     `gatsby-plugin-sass`,
-    'gatsby-plugin-sitemap',
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
