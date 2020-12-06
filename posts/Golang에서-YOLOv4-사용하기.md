@@ -55,7 +55,7 @@ func ReadCOCO() []string {
 
 다음으론 [**yolov4.weights**](https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights)와 [**yolov4.cfg**](https://github.com/Tianxiaomo/pytorch-YOLOv4/blob/master/cfg/yolov4.cfg)를 다운 받아 OpenCV DNN 모듈로 읽어내야합니다.
 
-```sh
+```bash
 > mkdir -p assets
 > wget -O assets/yolov4.weights https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights
 > wget -O assets/yolov4.cfg https://github.com/Tianxiaomo/pytorch-YOLOv4/blob/master/cfg/yolov4.cfg
