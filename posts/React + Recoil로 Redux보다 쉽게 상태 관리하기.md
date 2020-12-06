@@ -9,7 +9,7 @@ title: React + Recoil로 Redux보다 쉽게 상태 관리하기
 
  React에서 말하는 상태관리는 함수형 컴포넌트에서는 **useState**를 클래스형 컴포넌트에서는 **state**로 주로 생각할 것입니다. 하지만 이러한 상태관리는 컴포넌트에 붙어있기 때문에 어플리케이션이 커지다 보면 유지보수하기 어려울 것입니다. 예를 들면 **MyComponent**라는 컴포넌트가 있다고 합시다.  **MyComponent**에서 댓글을 달아 **state**가 변경된다면 부모 컴포넌트인 **App** 컴포넌트에서는 그 댓글을 사용할 수 없습니다.
 
-![recoil](./images/React-Recoil-1.png)
+![recoil](./images/React_Recoil_1.png)
 
  이러한 현상을 막기 위해 전역적으로 상태관리가 필요했고 그에 따른 상태관리 라이브러리가 많이 존재합니다.
 
