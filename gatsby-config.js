@@ -8,12 +8,23 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-         trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID || "none",
-         haed: false,
-         anonymize: true,
-      }
+        trackingIds: [
+          process.env.GOOGLE_ANALYTICS_TRACKING_ID || "none", 
+          process.env.AW_CONVERSION_ID || "none", 
+          process.env.DC_FLOODIGHT_ID || "none",
+        ],
+        gtagConfig: {
+          optimize_id: process.env.OPT_CONTAINER_ID,
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
+        pluginConfig: {
+          head: false,
+          respectDNT: true,
+        },
+      },
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-sitemap`,
