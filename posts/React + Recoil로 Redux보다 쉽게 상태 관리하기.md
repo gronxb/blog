@@ -90,6 +90,8 @@ const setText = useSetRecoilState(textState)
 
 # 실전! Todo List 적용
 
+## Install
+
  간단한 Recoil을 사용하기 위해 Todo List에 일정을 Recoil로 관리해 보겠습니다.
 
 ```bash
@@ -98,6 +100,8 @@ const setText = useSetRecoilState(textState)
 ```
 
 프로젝트를 먼저 생성해주겠습니다.
+
+## index.js
 
 ```jsx
 import React from 'react';
@@ -116,6 +120,8 @@ ReactDOM.render(
 ```
 
 recoil을 사용하기 위해 index.js에서 최상위 컴포넌트에 **RecoilRoot**를 씌어줍니다.
+
+## atoms.js
 
 ```jsx
 import React from 'react';
@@ -141,6 +147,8 @@ src 폴더에 atoms.js를 생성하고 **todoState**를 관리할 **atom**을 �
 그 다음 todo 리스트가 들어갈 배열을 default 값에 잡아줬습니다.
 
 todo 배열을 읽기만 하는 **todoGetter**로 **selector**로 만들어주었습니다.
+
+## App.js
 
 ```jsx
 import React, {useState} from 'react';
