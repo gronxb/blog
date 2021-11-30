@@ -3,7 +3,7 @@ module.exports = {
     title: `Develment Develog`,
     description: `Develop & Moment, Future`,
     author: `@gron1gh1`,
-    siteUrl: "https://develment.blog/"
+    siteUrl: "https://develment.netlify.app/"
 
   },
   plugins: [
